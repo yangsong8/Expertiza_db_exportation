@@ -42,6 +42,7 @@ public class Course {
 		this.courseStarted = courseStarted;
 		this.courseEnded = courseEnded;
 	}
+	
 	/**
 	 * @return the courseID
 	 */

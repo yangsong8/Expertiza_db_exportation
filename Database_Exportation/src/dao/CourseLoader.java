@@ -45,7 +45,7 @@ public class CourseLoader implements Loader<Course> {
 
 	@Override
 	public Course loadSingle(ResultSet rs) {
-		int tempCourseID;
+		String tempCourseID;
 		char[] tempCourseCIPCode;
 		String tempCourseTitle;
 		String tempCourseDescription;
@@ -56,11 +56,11 @@ public class CourseLoader implements Loader<Course> {
 		
 		Course course = null;
 		try {
-			tempCourseID = ResultSetParser.parseInt(rs, "CourseID");
+			tempCourseID = ResultSetParser.parseString(rs, "CourseID");// Should we restrict number of chars of courseID?
 			tempCourseCIPCode = ResultSetParser.parseCharArray(rs, "CourseCIPCode", 7);
 			tempCourseTitle = ResultSetParser.parseString(rs, "CourseDescription", 255);
 			tempCourseDescription = ResultSetParser.parseString(rs, "CourseDescription", 255);
-			tempCourseLevelID = ResultSetParser.parseInt(rs, "CourseLevelID");
+			tempCourseLevelID = ResultSetParser.parseInt(rs, "CourseLevelID");//Should we restrict number of chars of courseLevelID?
 			tempCourseCreated = ResultSetParser.parseDate(rs, "CourseCreated");
 			tempCourseStarted = ResultSetParser.parseDate(rs, "CourseStarted");
 			tempCourseEnded  = ResultSetParser.parseDate(rs, "CourseEnded");
@@ -75,7 +75,6 @@ public class CourseLoader implements Loader<Course> {
 		
 		return course;
 
-		return null;
 	}
 
 }
