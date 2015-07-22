@@ -14,6 +14,22 @@ public class Review {
 	private int assessedArtifactId;
 	
 	private int critiqueArtifactId;
+	
+	private int taskId;
+
+	/**
+	 * @return the taskId
+	 */
+	public int getTaskId() {
+		return taskId;
+	}
+
+	/**
+	 * @param taskId the taskId to set
+	 */
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
 
 	/**
 	 * @return the assessorActorId

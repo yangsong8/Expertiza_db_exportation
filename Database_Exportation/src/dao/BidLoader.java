@@ -33,8 +33,8 @@ public class BidLoader {
 		while(rs.next()){
 			Bid bid = createBid(rs);
 			if(bid == null) {
-				
-			} else {
+				//TO DO
+			} else { 	
 				bidList.add(bid);
 			}
 		}

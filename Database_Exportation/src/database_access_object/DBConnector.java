@@ -22,15 +22,16 @@ public class DBConnector {
 	   /**
 	    * A method that will handle the connection with the database and return a result set
 	    * @param sql
-	    * @return
+	    * @return the result set which is the result of executing a statement
 	    */
 	   public ResultSet query(String sql) {
+		   //What is STEP 1?
 	   conn = null;
 	   stmt = null;
 	   ResultSet rs = null;
 	   try{
 	      //STEP 2: Register JDBC driver
-	      Class.forName("com.mysql.jdbc.Driver");
+	      Class.forName(JDBC_DRIVER);
 
 	      //STEP 3: Open a connection
 	      System.out.println("Connecting to database...");
@@ -42,8 +43,6 @@ public class DBConnector {
 	      //String sql;
 	      //sql = "SELECT id, topic_id, team_id, priority FROM bids";
 	      rs = stmt.executeQuery(sql);
-
-	      
 	      
 	      return rs;
 	      

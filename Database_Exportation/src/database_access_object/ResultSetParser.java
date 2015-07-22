@@ -15,13 +15,13 @@ public class ResultSetParser {
 	
 	/**
 	 * A method that will return a specific value of a given column name 
-	 * @param rs
-	 * @param name
+	 * @param rs current result set
+	 * @param name column name at the current row in the result set
 	 * @return
 	 * @throws SQLException
 	 */
 	public static int parseInt(ResultSet rs, String name) throws SQLException {
-		int i  = rs.getInt(name);
-		return i;
+		return rs.getInt(name);
+		
 	}
 }

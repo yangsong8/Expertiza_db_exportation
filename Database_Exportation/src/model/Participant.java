@@ -10,29 +10,40 @@ package model;
  */
 public class Participant {
 	
-	private int id;
+	private int participantId;
+	private int appId;
+
+	public int getAppId() {
+		return appId;
+	}
+
+	public void setAppId(int appId) {
+		this.appId = appId;
+	}
 
 	/**
 	 * @param id
 	 */
-	public Participant(int id) {
+	public Participant(int participantId, int appId) {
 		super();
-		this.id = id;
+		this.participantId = participantId;
+		this.appId = appId;
 	}
 
 	/**
-	 * @return the id
+	 * @return the participantId
 	 */
-	public int getId() {
-		return id;
+	public int getParticipantId() {
+		return participantId;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param participantId the participantId to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setParticipantId(int participantId) {
+		this.participantId = participantId;
 	}
-	
+
+		
 	
 }
