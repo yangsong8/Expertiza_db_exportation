@@ -20,8 +20,19 @@ public class ResultSetParser {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static int parseInt(ResultSet rs, String name) throws SQLException {
+	// If the field is NULL, a NULL should be returned.
+	public static Integer parseInt(ResultSet rs, String name) throws SQLException {
+		if (rs.getString(name) == null || rs.getString(name).length()==0 ){
+			//The result for this column is NULL
+			return null;
+		}
 		int i  = rs.getInt(name);
 		return i;
+	}
+	
+	public static char[] parseCharArray(ResultSet rs, String name, int length) throws SQLException {
+		String  tempString = rs.getString(name);
+		char[] tempCharArray = tempString.substring(0, length).toCharArray();
+		return tempCharArray;
 	}
 }
