@@ -6,85 +6,74 @@ package model;
 /**
  * A class that represents a Review object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Review {
-	private int assessorActorId;
 	
-	private int assessedArtifactId;
-	
-	private int critiqueArtifactId;
-	
-	private int taskId;
-
+	private String assessorActorID;
+	private String taskID;
+	private String assessedArtifactID;
+	private String critiqueArtifactID;
 	/**
-	 * @return the taskId
+	 * @param assessorActorID
+	 * @param taskID
+	 * @param assessedArtifactID
+	 * @param critiqueArtifactID
 	 */
-	public int getTaskId() {
-		return taskId;
-	}
-
-	/**
-	 * @param taskId the taskId to set
-	 */
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
-	}
-
-	/**
-	 * @return the assessorActorId
-	 */
-	public int getAssessorActorId() {
-		return assessorActorId;
-	}
-
-	/**
-	 * @param assessorActorId the assessorActorId to set
-	 */
-	public void setAssessorActorId(int assessorActorId) {
-		this.assessorActorId = assessorActorId;
-	}
-
-	/**
-	 * @return the assessedArtifactId
-	 */
-	public int getAssessedArtifactId() {
-		return assessedArtifactId;
-	}
-
-	/**
-	 * @param assessedArtifactId the assessedArtifactId to set
-	 */
-	public void setAssessedArtifactId(int assessedArtifactId) {
-		this.assessedArtifactId = assessedArtifactId;
-	}
-
-	/**
-	 * @return the critiqueArtifactId
-	 */
-	public int getCritiqueArtifactId() {
-		return critiqueArtifactId;
-	}
-
-	/**
-	 * @param critiqueArtifactId the critiqueArtifactId to set
-	 */
-	public void setCritiqueArtifactId(int critiqueArtifactId) {
-		this.critiqueArtifactId = critiqueArtifactId;
-	}
-
-	/**
-	 * @param assessorActorId
-	 * @param assessedArtifactId
-	 * @param critiqueArtifactId
-	 */
-	public Review(int assessorActorId, int assessedArtifactId,
-			int critiqueArtifactId) {
+	public Review(String assessorActorID, String taskID, String assessedArtifactID, String critiqueArtifactID) {
 		super();
-		this.assessorActorId = assessorActorId;
-		this.assessedArtifactId = assessedArtifactId;
-		this.critiqueArtifactId = critiqueArtifactId;
+		this.assessorActorID = assessorActorID;
+		this.taskID = taskID;
+		this.assessedArtifactID = assessedArtifactID;
+		this.critiqueArtifactID = critiqueArtifactID;
 	}
-	
+	/**
+	 * @return the assessorActorID
+	 */
+	public String getAssessorActorID() {
+		return assessorActorID;
+	}
+	/**
+	 * @param assessorActorID the assessorActorID to set
+	 */
+	public void setAssessorActorID(String assessorActorID) {
+		this.assessorActorID = assessorActorID;
+	}
+	/**
+	 * @return the taskID
+	 */
+	public String getTaskID() {
+		return taskID;
+	}
+	/**
+	 * @param taskID the taskID to set
+	 */
+	public void setTaskID(String taskID) {
+		this.taskID = taskID;
+	}
+	/**
+	 * @return the assessedArtifactID
+	 */
+	public String getAssessedArtifactID() {
+		return assessedArtifactID;
+	}
+	/**
+	 * @param assessedArtifactID the assessedArtifactID to set
+	 */
+	public void setAssessedArtifactID(String assessedArtifactID) {
+		this.assessedArtifactID = assessedArtifactID;
+	}
+	/**
+	 * @return the critiqueArtifactID
+	 */
+	public String getCritiqueArtifactID() {
+		return critiqueArtifactID;
+	}
+	/**
+	 * @param critiqueArtifactID the critiqueArtifactID to set
+	 */
+	public void setCritiqueArtifactID(String critiqueArtifactID) {
+		this.critiqueArtifactID = critiqueArtifactID;
+	}
 	
 }

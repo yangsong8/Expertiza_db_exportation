@@ -5,68 +5,59 @@ package model;
 
 /**
  * @author kma
- *
+ * @author Van Duong
  */
 public class Level {
-	private int levelId;
 	
+	private int levelID;
 	private String levelLabel;
-	
 	private String levelDescription;
-
 	/**
-	 * @return the levelId
+	 * @param levelID
+	 * @param levelLabel
+	 * @param levelDescription
 	 */
-	public int getLevelId() {
-		return levelId;
+	public Level(int levelID, String levelLabel, String levelDescription) {
+		super();
+		this.levelID = levelID;
+		this.levelLabel = levelLabel;
+		this.levelDescription = levelDescription;
 	}
-
 	/**
-	 * @param levelId the levelId to set
+	 * @return the levelID
 	 */
-	public void setLevelId(int levelId) {
-		this.levelId = levelId;
+	public int getLevelID() {
+		return levelID;
 	}
-
+	/**
+	 * @param levelID the levelID to set
+	 */
+	public void setLevelID(int levelID) {
+		this.levelID = levelID;
+	}
 	/**
 	 * @return the levelLabel
 	 */
 	public String getLevelLabel() {
 		return levelLabel;
 	}
-
 	/**
 	 * @param levelLabel the levelLabel to set
 	 */
 	public void setLevelLabel(String levelLabel) {
 		this.levelLabel = levelLabel;
 	}
-
 	/**
 	 * @return the levelDescription
 	 */
 	public String getLevelDescription() {
 		return levelDescription;
 	}
-
 	/**
 	 * @param levelDescription the levelDescription to set
 	 */
 	public void setLevelDescription(String levelDescription) {
 		this.levelDescription = levelDescription;
 	}
-
-	/**
-	 * @param levelId
-	 * @param levelLabel
-	 * @param levelDescription
-	 */
-	public Level(int levelId, String levelLabel, String levelDescription) {
-		super();
-		this.levelId = levelId;
-		this.levelLabel = levelLabel;
-		this.levelDescription = levelDescription;
-	} 
-	
 	
 }

@@ -8,169 +8,136 @@ import java.util.Date;
 /**
  * An object that will represent a course 
  * @author kma
- *
+ * @author Van Duong
  */
 public class Course {
-	private int courseId;
 	
-	private char[] cipId = new char[7];
-	
-	private String title;
-	
-	private String description;
-	
-	private int levelID;
-	
+	private String courseID;
+	private char[] courseCIPCode = new char[7];
+	private String courseTitle;
+	private String courseDescription;
+	private int courseLevelID;
 	private Date courseCreated;
-	
 	private Date courseStarted;
-	
 	private Date courseEnded;
-
 	/**
-	 * @return the courseId
+	 * @param courseID
+	 * @param courseCIPCode
+	 * @param courseTitle
+	 * @param courseDescription
+	 * @param courseLevelID
+	 * @param courseCreated
+	 * @param courseStarted
+	 * @param courseEnded
 	 */
-	public int getCourseId() {
-		return courseId;
+	public Course(String courseID, char[] courseCIPCode, String courseTitle, String courseDescription,
+			int courseLevelID, Date courseCreated, Date courseStarted, Date courseEnded) {
+		super();
+		this.courseID = courseID;
+		this.courseCIPCode = courseCIPCode;
+		this.courseTitle = courseTitle;
+		this.courseDescription = courseDescription;
+		this.courseLevelID = courseLevelID;
+		this.courseCreated = courseCreated;
+		this.courseStarted = courseStarted;
+		this.courseEnded = courseEnded;
 	}
-
 	/**
-	 * @param courseId the courseId to set
+	 * @return the courseID
 	 */
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public String getCourseID() {
+		return courseID;
 	}
-
 	/**
-	 * @return the cipId
+	 * @param courseID the courseID to set
 	 */
-	public char[] getCipId() {
-		return cipId;
+	public void setCourseID(String courseID) {
+		this.courseID = courseID;
 	}
-
 	/**
-	 * @param cipId the cipId to set
+	 * @return the courseCIPCode
 	 */
-	public void setCipId(char[] cipId) {
-		this.cipId = cipId;
+	public char[] getCourseCIPCode() {
+		return courseCIPCode;
 	}
-
 	/**
-	 * @return the title
+	 * @param courseCIPCode the courseCIPCode to set
 	 */
-	public String getTitle() {
-		return title;
+	public void setCourseCIPCode(char[] courseCIPCode) {
+		this.courseCIPCode = courseCIPCode;
 	}
-
 	/**
-	 * @param title the title to set
+	 * @return the courseTitle
 	 */
-	public void setTitle(String title) {
-		this.title = title;
+	public String getCourseTitle() {
+		return courseTitle;
 	}
-
 	/**
-	 * @return the description
+	 * @param courseTitle the courseTitle to set
 	 */
-	public String getDescription() {
-		return description;
+	public void setCourseTitle(String courseTitle) {
+		this.courseTitle = courseTitle;
 	}
-
 	/**
-	 * @param decription the description to set
+	 * @return the courseDescription
 	 */
-	public void setDecription(String description) {
-		this.description = description;
+	public String getCourseDescription() {
+		return courseDescription;
 	}
-
-	
-
 	/**
-	 * @return the levelID
+	 * @param courseDescription the courseDescription to set
 	 */
-	public int getLevelID() {
-		return levelID;
+	public void setCourseDescription(String courseDescription) {
+		this.courseDescription = courseDescription;
 	}
-
 	/**
-	 * @param levelID the levelID to set
+	 * @return the courseLevelID
 	 */
-	public void setLevelID(int levelID) {
-		this.levelID = levelID;
+	public int getCourseLevelID() {
+		return courseLevelID;
 	}
-
+	/**
+	 * @param courseLevelID the courseLevelID to set
+	 */
+	public void setCourseLevelID(int courseLevelID) {
+		this.courseLevelID = courseLevelID;
+	}
 	/**
 	 * @return the courseCreated
 	 */
 	public Date getCourseCreated() {
 		return courseCreated;
 	}
-
 	/**
 	 * @param courseCreated the courseCreated to set
 	 */
 	public void setCourseCreated(Date courseCreated) {
 		this.courseCreated = courseCreated;
 	}
-
 	/**
 	 * @return the courseStarted
 	 */
 	public Date getCourseStarted() {
 		return courseStarted;
 	}
-
 	/**
 	 * @param courseStarted the courseStarted to set
 	 */
 	public void setCourseStarted(Date courseStarted) {
 		this.courseStarted = courseStarted;
 	}
-
 	/**
 	 * @return the courseEnded
 	 */
 	public Date getCourseEnded() {
 		return courseEnded;
 	}
-
 	/**
 	 * @param courseEnded the courseEnded to set
 	 */
 	public void setCourseEnded(Date courseEnded) {
 		this.courseEnded = courseEnded;
 	}
-
-	/**
-	 * @param courseId
-	 * @param cipId
-	 * @param title
-	 * @param decription
-	 * @param level
-	 * @param courseCreated
-	 * @param courseStarted
-	 * @param courseEnded
-	 */
-	public Course(int courseId, char[] cipId, String title, String description,
-			int levelID, Date courseCreated, Date courseStarted,
-			Date courseEnded) {
-		super();
-		if(description.length() > 250) {
-			this.description = description.substring(0, 250);
-		} else {
-			this.description = description;
-		}
-		this.courseId = courseId;
-		this.cipId = cipId;
-		this.title = title;
-		this.levelID = levelID;
-		this.courseCreated = courseCreated;
-		this.courseStarted = courseStarted;
-		this.courseEnded = courseEnded;
-	}
-	
-	
-	
 	
 	
 }

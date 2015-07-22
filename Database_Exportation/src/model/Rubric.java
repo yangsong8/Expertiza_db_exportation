@@ -6,50 +6,44 @@ package model;
 /**
  * A class that represents a Rubric object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Rubric {
-	private int taskId;
 	
-	private int criterionId;
-
+	private String taskID;
+	private String criterionID;
 	/**
-	 * @return the taskId
+	 * @param taskID
+	 * @param criterionID
 	 */
-	public int getTaskId() {
-		return taskId;
-	}
-
-	/**
-	 * @param taskId the taskId to set
-	 */
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
-	}
-
-	/**
-	 * @return the criterionId
-	 */
-	public int getCriterionId() {
-		return criterionId;
-	}
-
-	/**
-	 * @param criterionId the criterionId to set
-	 */
-	public void setCriterionId(int criterionId) {
-		this.criterionId = criterionId;
-	}
-
-	/**
-	 * @param taskId
-	 * @param criterionId
-	 */
-	public Rubric(int taskId, int criterionId) {
+	public Rubric(String taskID, String criterionID) {
 		super();
-		this.taskId = taskId;
-		this.criterionId = criterionId;
+		this.taskID = taskID;
+		this.criterionID = criterionID;
 	}
-	
+	/**
+	 * @return the taskID
+	 */
+	public String getTaskID() {
+		return taskID;
+	}
+	/**
+	 * @param taskID the taskID to set
+	 */
+	public void setTaskID(String taskID) {
+		this.taskID = taskID;
+	}
+	/**
+	 * @return the criterionID
+	 */
+	public String getCriterionID() {
+		return criterionID;
+	}
+	/**
+	 * @param criterionID the criterionID to set
+	 */
+	public void setCriterionID(String criterionID) {
+		this.criterionID = criterionID;
+	}
 	
 }

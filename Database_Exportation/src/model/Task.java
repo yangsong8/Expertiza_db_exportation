@@ -5,124 +5,104 @@ import java.util.Date;
 /**
  * A class that reprents a task object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Task {
-	private int taskId;
 	
-	private String taskType;
-	
+	private String taskID;
+	private int taskTypeID;
 	private String taskTitle;
-	
 	private String taskPrompt;
-	
 	private Date taskOpen;
-	
 	private Date taskDue;
-
 	/**
-	 * @return the taskId
+	 * @param taskID
+	 * @param taskTypeID
+	 * @param taskTitle
+	 * @param taskPrompt
+	 * @param taskOpen
+	 * @param taskDue
 	 */
-	public int getTaskId() {
-		return taskId;
+	public Task(String taskID, int taskTypeID, String taskTitle, String taskPrompt, Date taskOpen, Date taskDue) {
+		super();
+		this.taskID = taskID;
+		this.taskTypeID = taskTypeID;
+		this.taskTitle = taskTitle;
+		this.taskPrompt = taskPrompt;
+		this.taskOpen = taskOpen;
+		this.taskDue = taskDue;
 	}
-
 	/**
-	 * @param taskId the taskId to set
+	 * @return the taskID
 	 */
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
+	public String getTaskID() {
+		return taskID;
 	}
-
 	/**
-	 * @return the taskType
+	 * @param taskID the taskID to set
 	 */
-	public String getTaskType() {
-		return taskType;
+	public void setTaskID(String taskID) {
+		this.taskID = taskID;
 	}
-
 	/**
-	 * @param taskType the taskType to set
+	 * @return the taskTypeID
 	 */
-	public void setTaskType(String taskType) {
-		this.taskType = taskType;
+	public int getTaskTypeID() {
+		return taskTypeID;
 	}
-
+	/**
+	 * @param taskTypeID the taskTypeID to set
+	 */
+	public void setTaskTypeID(int taskTypeID) {
+		this.taskTypeID = taskTypeID;
+	}
 	/**
 	 * @return the taskTitle
 	 */
 	public String getTaskTitle() {
 		return taskTitle;
 	}
-
 	/**
 	 * @param taskTitle the taskTitle to set
 	 */
 	public void setTaskTitle(String taskTitle) {
 		this.taskTitle = taskTitle;
 	}
-
 	/**
 	 * @return the taskPrompt
 	 */
 	public String getTaskPrompt() {
 		return taskPrompt;
 	}
-
 	/**
 	 * @param taskPrompt the taskPrompt to set
 	 */
 	public void setTaskPrompt(String taskPrompt) {
 		this.taskPrompt = taskPrompt;
 	}
-
 	/**
 	 * @return the taskOpen
 	 */
 	public Date getTaskOpen() {
 		return taskOpen;
 	}
-
 	/**
 	 * @param taskOpen the taskOpen to set
 	 */
 	public void setTaskOpen(Date taskOpen) {
 		this.taskOpen = taskOpen;
 	}
-
 	/**
 	 * @return the taskDue
 	 */
 	public Date getTaskDue() {
 		return taskDue;
 	}
-
 	/**
 	 * @param taskDue the taskDue to set
 	 */
 	public void setTaskDue(Date taskDue) {
 		this.taskDue = taskDue;
 	}
-
-	/**
-	 * @param taskId
-	 * @param taskType
-	 * @param taskTitle
-	 * @param taskPrompt
-	 * @param taskOpen
-	 * @param taskDue
-	 */
-	public Task(int taskId, String taskType, String taskTitle,
-			String taskPrompt, Date taskOpen, Date taskDue) {
-		super();
-		this.taskId = taskId;
-		this.taskType = taskType;
-		this.taskTitle = taskTitle;
-		this.taskPrompt = taskPrompt;
-		this.taskOpen = taskOpen;
-		this.taskDue = taskDue;
-	}
-	
-	
 	
 }

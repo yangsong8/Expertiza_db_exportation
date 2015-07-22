@@ -3,71 +3,65 @@
  */
 package model;
 
+import java.io.File;
+
 /**
  * A class that reprents an Item object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Item {
-	 private int itemId;
-	 
-	 private String itemContent;
-	 
-	 private int artifactId;
-
+	
+	private String itemID;
+	private File itemContent;
+	private String artifactID;
 	/**
-	 * @return the itemId
+	 * @param itemID
+	 * @param itemContent
+	 * @param artifactID
 	 */
-	public int getItemId() {
-		return itemId;
+	public Item(String itemID, File itemContent, String artifactID) {
+		super();
+		this.itemID = itemID;
+		this.itemContent = itemContent;
+		this.artifactID = artifactID;
 	}
-
 	/**
-	 * @param itemId the itemId to set
+	 * @return the itemID
 	 */
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
+	public String getItemID() {
+		return itemID;
 	}
-
+	/**
+	 * @param itemID the itemID to set
+	 */
+	public void setItemID(String itemID) {
+		this.itemID = itemID;
+	}
 	/**
 	 * @return the itemContent
 	 */
-	public String getItemContent() {
+	public File getItemContent() {
 		return itemContent;
 	}
-
 	/**
 	 * @param itemContent the itemContent to set
 	 */
-	public void setItemContent(String itemContent) {
+	public void setItemContent(File itemContent) {
 		this.itemContent = itemContent;
 	}
-
 	/**
-	 * @return the artifactId
+	 * @return the artifactID
 	 */
-	public int getArtifactId() {
-		return artifactId;
+	public String getArtifactID() {
+		return artifactID;
 	}
-
 	/**
-	 * @param artifactId the artifactId to set
+	 * @param artifactID the artifactID to set
 	 */
-	public void setArtifactId(int artifactId) {
-		this.artifactId = artifactId;
+	public void setArtifactID(String artifactID) {
+		this.artifactID = artifactID;
 	}
-
-	/**
-	 * @param itemId
-	 * @param itemContent
-	 * @param artifactId
-	 */
-	public Item(int itemId, String itemContent, int artifactId) {
-		super();
-		this.itemId = itemId;
-		this.itemContent = itemContent;
-		this.artifactId = artifactId;
-	}
-	 
-	 
+	
+	
 }

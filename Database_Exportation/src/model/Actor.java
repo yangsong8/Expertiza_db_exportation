@@ -5,32 +5,32 @@ package model;
 
 /**
  * @author kma
- *
+ * @author Van Duong
  */
 public class Actor {
-	private int actorID;
+	private String actorID;
+
+	public Actor(String actorID) {
+		super();
+		this.actorID = actorID;
+	}
 
 	/**
 	 * @return the actorID
 	 */
-	public int getActorID() {
+	public String getActorID() {
 		return actorID;
 	}
 
 	/**
 	 * @param actorID the actorID to set
 	 */
-	public void setActorID(int actorID) {
+	public void setActorID(String actorID) {
 		this.actorID = actorID;
 	}
 
-	/**
-	 * @param actorID
-	 */
-	public Actor(int actorID) {
-		super();
-		this.actorID = actorID;
-	}
+	
+
 	
 	
 }

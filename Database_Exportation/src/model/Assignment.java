@@ -6,86 +6,74 @@ package model;
 /**
  * A class that represents an assignment object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Assignment {
-	private int assignmentId;
 	
-	private char[] assignmentCIPId = new char[7];
-	
-	private String title;
-	
-	private String description;
-
+	private String assigmentID;
+	private char[] assignCIPCode = new char[7];
+	private String assignTitle;
+	private String assignDescription;
 	/**
-	 * @return the assignmentId
+	 * @param assigmentID
+	 * @param assignCIPCode
+	 * @param assignTitle
+	 * @param assignDescription
 	 */
-	public int getAssignmentId() {
-		return assignmentId;
-	}
-
-	/**
-	 * @param assignmentId the assignmentId to set
-	 */
-	public void setAssignmentId(int assignmentId) {
-		this.assignmentId = assignmentId;
-	}
-
-	/**
-	 * @return the assignmentCIPId
-	 */
-	public char[] getAssignmentCIPId() {
-		return assignmentCIPId;
-	}
-
-	/**
-	 * @param assignmentCIPId the assignmentCIPId to set
-	 */
-	public void setAssignmentCIPId(char[] assignmentCIPId) {
-		this.assignmentCIPId = assignmentCIPId;
-	}
-
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
-
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	/**
-	 * @param assignmentId
-	 * @param assignmentCIPId
-	 * @param title
-	 * @param description
-	 */
-	public Assignment(int assignmentId, char[] assignmentCIPId, String title,
-			String description) {
+	public Assignment(String assigmentID, char[] assignCIPCode, String assignTitle, String assignDescription) {
 		super();
-		this.assignmentId = assignmentId;
-		this.assignmentCIPId = assignmentCIPId;
-		this.title = title;
-		this.description = description;
+		this.assigmentID = assigmentID;
+		this.assignCIPCode = assignCIPCode;
+		this.assignTitle = assignTitle;
+		this.assignDescription = assignDescription;
+	}
+	/**
+	 * @return the assigmentID
+	 */
+	public String getAssigmentID() {
+		return assigmentID;
+	}
+	/**
+	 * @param assigmentID the assigmentID to set
+	 */
+	public void setAssigmentID(String assigmentID) {
+		this.assigmentID = assigmentID;
+	}
+	/**
+	 * @return the assignCIPCode
+	 */
+	public char[] getAssignCIPCode() {
+		return assignCIPCode;
+	}
+	/**
+	 * @param assignCIPCode the assignCIPCode to set
+	 */
+	public void setAssignCIPCode(char[] assignCIPCode) {
+		this.assignCIPCode = assignCIPCode;
+	}
+	/**
+	 * @return the assignTitle
+	 */
+	public String getAssignTitle() {
+		return assignTitle;
+	}
+	/**
+	 * @param assignTitle the assignTitle to set
+	 */
+	public void setAssignTitle(String assignTitle) {
+		this.assignTitle = assignTitle;
+	}
+	/**
+	 * @return the assignDescription
+	 */
+	public String getAssignDescription() {
+		return assignDescription;
+	}
+	/**
+	 * @param assignDescription the assignDescription to set
+	 */
+	public void setAssignDescription(String assignDescription) {
+		this.assignDescription = assignDescription;
 	}
 	
 	

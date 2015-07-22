@@ -8,35 +8,79 @@ import java.util.Date;
 /**
  * A class that represents an artifact object
  * @author kma
- *
+ * @author Van Duong
  */
 public class Artifact {
-	private int arftifactId;
 	
+	private String artifactID;
+	private String actorID;
+	private String taskID;
 	private String artifactContent;
-	
 	private int artifactCharLength;
-	
-	private Date artifactBegin;
-	
+	private Date artifactOpen;
 	private Date artifactEnd;
 	
-	private int actorId;
-	
-	private int taskId;
-
 	/**
-	 * @return the arftifactId
+	 * @param artifactID
+	 * @param actorID
+	 * @param taskID
+	 * @param artifactContent
+	 * @param artifactCharLength
+	 * @param artifactOpen
+	 * @param artifactEnd
 	 */
-	public int getArftifactId() {
-		return arftifactId;
+	public Artifact(String artifactID, String actorID, String taskID, String artifactContent, int artifactCharLength,
+			Date artifactOpen, Date artifactEnd) {
+		super();
+		this.artifactID = artifactID;
+		this.actorID = actorID;
+		this.taskID = taskID;
+		this.artifactContent = artifactContent;
+		this.artifactCharLength = artifactCharLength;
+		this.artifactOpen = artifactOpen;
+		this.artifactEnd = artifactEnd;
 	}
 
 	/**
-	 * @param arftifactId the arftifactId to set
+	 * @return the artifactID
 	 */
-	public void setArftifactId(int arftifactId) {
-		this.arftifactId = arftifactId;
+	public String getArtifactID() {
+		return artifactID;
+	}
+
+	/**
+	 * @param artifactID the artifactID to set
+	 */
+	public void setArtifactID(String artifactID) {
+		this.artifactID = artifactID;
+	}
+
+	/**
+	 * @return the actorID
+	 */
+	public String getActorID() {
+		return actorID;
+	}
+
+	/**
+	 * @param actorID the actorID to set
+	 */
+	public void setActorID(String actorID) {
+		this.actorID = actorID;
+	}
+
+	/**
+	 * @return the taskID
+	 */
+	public String getTaskID() {
+		return taskID;
+	}
+
+	/**
+	 * @param taskID the taskID to set
+	 */
+	public void setTaskID(String taskID) {
+		this.taskID = taskID;
 	}
 
 	/**
@@ -68,17 +112,17 @@ public class Artifact {
 	}
 
 	/**
-	 * @return the artifactBegin
+	 * @return the artifactOpen
 	 */
-	public Date getArtifactBegin() {
-		return artifactBegin;
+	public Date getArtifactOpen() {
+		return artifactOpen;
 	}
 
 	/**
-	 * @param artifactBegin the artifactBegin to set
+	 * @param artifactOpen the artifactOpen to set
 	 */
-	public void setArtifactBegin(Date artifactBegin) {
-		this.artifactBegin = artifactBegin;
+	public void setArtifactOpen(Date artifactOpen) {
+		this.artifactOpen = artifactOpen;
 	}
 
 	/**
@@ -94,57 +138,6 @@ public class Artifact {
 	public void setArtifactEnd(Date artifactEnd) {
 		this.artifactEnd = artifactEnd;
 	}
-
-	/**
-	 * @return the actorId
-	 */
-	public int getActorId() {
-		return actorId;
-	}
-
-	/**
-	 * @param actorId the actorId to set
-	 */
-	public void setActorId(int actorId) {
-		this.actorId = actorId;
-	}
-
-	/**
-	 * @return the taskId
-	 */
-	public int getTaskId() {
-		return taskId;
-	}
-
-	/**
-	 * @param taskId the taskId to set
-	 */
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
-	}
-
-	/**
-	 * @param arftifactId
-	 * @param artifactContent
-	 * @param artifactCharLength
-	 * @param artifactBegin
-	 * @param artifactEnd
-	 * @param actorId
-	 * @param taskId
-	 */
-	public Artifact(int arftifactId, String artifactContent,
-			int artifactCharLength, Date artifactBegin, Date artifactEnd,
-			int actorId, int taskId) {
-		super();
-		this.arftifactId = arftifactId;
-		this.artifactContent = artifactContent;
-		this.artifactCharLength = artifactCharLength;
-		this.artifactBegin = artifactBegin;
-		this.artifactEnd = artifactEnd;
-		this.actorId = actorId;
-		this.taskId = taskId;
-	}
-	
 	
 	
 }
