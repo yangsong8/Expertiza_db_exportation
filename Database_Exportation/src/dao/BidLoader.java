@@ -27,7 +27,7 @@ public class BidLoader {
 	 */
 	public ArrayList<Bid> getBids() throws SQLException {
 		ArrayList<Bid> bidList = new ArrayList<Bid>();
-		String sql = "SELECT id, topic_id, team_id, priority FROM bids";
+		String sql = "SELECT id, topic_id, team_id, priority FROM bids;";
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
 		while(rs.next()){

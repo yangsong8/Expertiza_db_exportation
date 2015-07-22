@@ -21,7 +21,7 @@ public interface Loader<T> {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<T> loadList(ResultSet rs) throws SQLException;
+	public ArrayList<T> loadList() throws SQLException;
 	
 	/**
 	 * A method that will load a single item from result set

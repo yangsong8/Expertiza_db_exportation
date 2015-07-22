@@ -19,7 +19,7 @@ public class Course {
 	
 	private String description;
 	
-	private String level;
+	private int levelID;
 	
 	private Date courseCreated;
 	
@@ -83,18 +83,20 @@ public class Course {
 		this.description = description;
 	}
 
+	
+
 	/**
-	 * @return the level
+	 * @return the levelID
 	 */
-	public String getLevel() {
-		return level;
+	public int getLevelID() {
+		return levelID;
 	}
 
 	/**
-	 * @param level the level to set
+	 * @param levelID the levelID to set
 	 */
-	public void setLevel(String level) {
-		this.level = level;
+	public void setLevelID(int levelID) {
+		this.levelID = levelID;
 	}
 
 	/**
@@ -150,14 +152,18 @@ public class Course {
 	 * @param courseEnded
 	 */
 	public Course(int courseId, char[] cipId, String title, String description,
-			String level, Date courseCreated, Date courseStarted,
+			int levelID, Date courseCreated, Date courseStarted,
 			Date courseEnded) {
 		super();
+		if(description.length() > 250) {
+			this.description = description.substring(0, 250);
+		} else {
+			this.description = description;
+		}
 		this.courseId = courseId;
 		this.cipId = cipId;
 		this.title = title;
-		this.description = description;
-		this.level = level;
+		this.levelID = levelID;
 		this.courseCreated = courseCreated;
 		this.courseStarted = courseStarted;
 		this.courseEnded = courseEnded;
