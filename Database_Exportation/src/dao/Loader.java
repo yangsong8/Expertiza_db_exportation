@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 
 /**
- * An interface for all of the loaders
+ * An interface for all of the loaders. A loader queries the data and converts each entity in Expertiza format to PRML format.
+ * Each loader handles a specific entity<T>
  * @author kma
  *
  */

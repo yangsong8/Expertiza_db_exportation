@@ -16,7 +16,7 @@ import model.Course;
 /**
  * A loader class for Course object
  * @author kma
- *
+ * @author Van Duong
  */
 public class CourseLoader implements Loader<Course> {
 
