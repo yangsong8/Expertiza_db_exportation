@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database_access_object.DBConnector;
 import database_access_object.ResultSetParser;
 import model.Assignment;
 
@@ -17,8 +18,23 @@ import model.Assignment;
 public class AssignmentLoader{
 
 	public ArrayList<Assignment> loadList(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+		String sql = "SELECT id as 'AssignmentID', name as 'AssignmentTitle', spec_location as 'AssignmentDescription', NULL as 'CourseCIPCode';";
+		DBConnector dbc = new DBConnector();
+		ResultSet rs = dbc.query(sql);
+		while(rs.next()){
+			Assignment assignment = loadSingle(rs);
+			if(assignment == null) {
+				
+			} else {
+				if(assignment.getAssigmentID() == id) {
+					assignmentList.add(assignment);
+				}
+			}
+		}
+		rs.close();
+		dbc.close();
+		return assignmentList;
 	}
 
 	public Assignment loadSingle(ResultSet rs) {
