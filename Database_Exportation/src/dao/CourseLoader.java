@@ -17,7 +17,7 @@ import model.Course;
  * @author kma
  * @author Van Duong
  */
-public class CourseLoader implements Loader<Course> {
+public class CourseLoader{
 
 	public ArrayList<Course> loadList() throws SQLException {
 		ArrayList<Course> courseList = new ArrayList<Course>();

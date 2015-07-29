@@ -30,7 +30,7 @@ public class AssignmentInserter{
 				pstmt.setObject(4, assignment.getAssignDescription()); 
 				
 				pstmt.executeUpdate();
-				System.out.println("=======================");
+				System.out.println("==========Assignment object inserted=============");
 				
 				//clearParameters：清理当前的参数，如果直接执行会带来异常:No value specified for parameter 1
 				//pstmt.clearParameters();

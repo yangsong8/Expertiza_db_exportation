@@ -7,7 +7,6 @@ import dao.AssignmentLoader;
 import dao.CourseLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
-import dao.inserter.CourseInserter;
 
 /**
  * 
@@ -53,6 +52,7 @@ public class DBEntrance {
 			{
 				AssignmentInserter.insertSingle(assignmentList.get(j));
 			}
+			System.out.println("Done!!!");
 		}
 		
 	}
