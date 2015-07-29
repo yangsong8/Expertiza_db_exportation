@@ -16,10 +16,16 @@ import model.Assignment;
  *
  */
 public class AssignmentLoader{
-
+	
+	/**
+	 * A method that will use the id from a course to load associated assignments
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public ArrayList<Assignment> loadList(int id) throws SQLException {
 		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
-		String sql = "SELECT id as 'AssignmentID', name as 'AssignmentTitle', spec_location as 'AssignmentDescription', NULL as 'CourseCIPCode';";
+		String sql = "SELECT id as 'AssignmentID', name as 'AssignmentTitle', spec_location as 'AssignmentDescription', NULL as 'AssignmentCIPCode';";
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
 		while(rs.next()){
@@ -36,7 +42,12 @@ public class AssignmentLoader{
 		dbc.close();
 		return assignmentList;
 	}
-
+	
+	/**
+	 * A method that load a single assignment 
+	 * @param rs
+	 * @return
+	 */
 	public Assignment loadSingle(ResultSet rs) {
 		Integer tempId;
 		char[] tempCIPCode;
