@@ -3,12 +3,13 @@
  */
 package dao;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database_access_object.DBConnector;
-import model.Item;
+import database_access_object.ResultSetParser;
 import model.Item;
 
 /**
@@ -41,8 +42,21 @@ public class ItemLoader implements Loader<Item> {
 
 	@Override
 	public Item loadSingle(ResultSet rs) {
-		// TODO Auto-generated method stub
-		return null;
+		String itemID = "";
+		File itemContent = null;
+		String artifactID = "";
+		Item item = null;
+		
+		try {
+			itemID = ResultSetParser.parseString(rs, itemID);
+			//itemContent = 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return item;
+		
+		
 	}
 
 }

@@ -6,7 +6,7 @@ package model;
 import java.io.File;
 
 /**
- * A class that reprents an Item object
+ * A class that represents an Item object
  * @author kma
  * @author Van Duong
  */

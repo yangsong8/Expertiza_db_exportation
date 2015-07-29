@@ -10,7 +10,7 @@ package model;
  */
 public class Assignment {
 	
-	private String assigmentID;
+	private Integer assigmentID;
 	private char[] assignCIPCode = new char[7];
 	private String assignTitle;
 	private String assignDescription;
@@ -20,7 +20,7 @@ public class Assignment {
 	 * @param assignTitle
 	 * @param assignDescription
 	 */
-	public Assignment(String assigmentID, char[] assignCIPCode, String assignTitle, String assignDescription) {
+	public Assignment(Integer assigmentID, char[] assignCIPCode, String assignTitle, String assignDescription) {
 		super();
 		this.assigmentID = assigmentID;
 		this.assignCIPCode = assignCIPCode;
@@ -30,13 +30,13 @@ public class Assignment {
 	/**
 	 * @return the assigmentID
 	 */
-	public String getAssigmentID() {
+	public Integer getAssigmentID() {
 		return assigmentID;
 	}
 	/**
 	 * @param assigmentID the assigmentID to set
 	 */
-	public void setAssigmentID(String assigmentID) {
+	public void setAssigmentID(Integer assigmentID) {
 		this.assigmentID = assigmentID;
 	}
 	/**

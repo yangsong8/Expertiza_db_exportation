@@ -1,8 +1,13 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Bid;
-import dao.BidLoader;
+import model.Assignment;
+import model.Course;
+import dao.AssignmentLoader;
+import dao.CourseLoader;
+import dao.inserter.AssignmentInserter;
+import dao.inserter.CourseInserter;
+import dao.inserter.CourseInserter;
 
 /**
  * 
@@ -21,13 +26,35 @@ public class DBEntrance {
 	 * @throws SQLException 
 	 */
 	public static void main(String[] args) throws SQLException {
-		BidLoader bidLoader = new BidLoader();
-		ArrayList<Bid> bidList = bidLoader.getBids();
+		CourseLoader courseLoader = new CourseLoader();
+		ArrayList<Course> courseList = courseLoader.loadList();
 		
-		for(int i = 0; i < bidList.size(); i++) {
-			System.out.print(bidList.get(i).getId() + " " + bidList.get(i).getTeam_id() 
-					+ " " + bidList.get(i).getTopic_id() + " " + bidList.get(i).getPriority() + "\n");
+//		for(int i = 0; i < courseList.size(); i++) {
+//			String tempCIP = new String(courseList.get(i).getCourseCIPCode());
+//			System.out.print(courseList.get(i).getCourseID() + " " + tempCIP + " " 
+//					+ courseList.get(i).getCourseLevelID() + " " + courseList.get(i).getCourseTitle() + " " 
+//					+ courseList.get(i).getCourseDescription() + " " + courseList.get(i).getCourseCreated() + " " 
+//					+ courseList.get(i).getCourseStarted() + " " + courseList.get(i).getCourseEnded() + 
+//					 "\n");
+//		}
+		
+		for(int i=0;i<courseList.size();i++)
+		{
+			CourseInserter.insertSingle(courseList.get(i));
+			
+			//new task b4 Wednesday:
+			//Create assignment class
+			//attribute mapping between Expertiza and PRML:AssignmentID-id;AssignmentCIPCode-null;AssignmentTitle-name;AssignmentDescription-spec_location
+			//Create assignmentloader and implement loadlist
+			//Create assignment inserter and implement insertSingle
+			AssignmentLoader assignmentLoader = new AssignmentLoader();
+			ArrayList<Assignment> assignmentList = assignmentLoader.loadList(courseList.get(i).getCourseID());
+			for(int j=0; j<assignmentList.size();j++)
+			{
+				AssignmentInserter.insertSingle(assignmentList.get(j));
+			}
 		}
+		
 	}
 
 }

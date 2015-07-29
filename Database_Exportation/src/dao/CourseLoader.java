@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import database_access_object.DBConnector;
 import database_access_object.ResultSetParser;
-import model.Bid;
 import model.Course;
 
 /**
@@ -20,13 +19,12 @@ import model.Course;
  */
 public class CourseLoader implements Loader<Course> {
 
-	@Override
 	public ArrayList<Course> loadList() throws SQLException {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		//Query for all the courses
-		//String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses;";
+		String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses;";
 		//Query for course 155
-		String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses where id=155;";
+		//String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses where id=155;";
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -43,23 +41,22 @@ public class CourseLoader implements Loader<Course> {
 		return courseList;
 	}
 
-	@Override
 	public Course loadSingle(ResultSet rs) {
-		String tempCourseID;
+		Integer tempCourseID;
 		char[] tempCourseCIPCode;
 		String tempCourseTitle;
 		String tempCourseDescription;
-		int tempCourseLevelID;
+		Integer tempCourseLevelID;
 		Date tempCourseCreated;
 		Date tempCourseStarted;
 		Date tempCourseEnded;
 		
 		Course course = null;
 		try {
-			tempCourseID = ResultSetParser.parseString(rs, "CourseID");// Should we restrict number of chars of courseID?
+			tempCourseID = ResultSetParser.parseInt(rs, "CourseID");// Should we restrict number of chars of courseID?
 			tempCourseCIPCode = ResultSetParser.parseCharArray(rs, "CourseCIPCode", 7);
-			tempCourseTitle = ResultSetParser.parseString(rs, "CourseDescription", 255);
-			tempCourseDescription = ResultSetParser.parseString(rs, "CourseDescription", 255);
+			tempCourseTitle = ResultSetParser.parseString(rs, "CourseTitle");
+			tempCourseDescription = ResultSetParser.parseString(rs, "CourseDescription");
 			tempCourseLevelID = ResultSetParser.parseInt(rs, "CourseLevelID");//Should we restrict number of chars of courseLevelID?
 			tempCourseCreated = ResultSetParser.parseDate(rs, "CourseCreated");
 			tempCourseStarted = ResultSetParser.parseDate(rs, "CourseStarted");

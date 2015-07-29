@@ -12,11 +12,11 @@ import java.util.Date;
  */
 public class Course {
 	
-	private String courseID;
+	private Integer courseID;
 	private char[] courseCIPCode = new char[7];
 	private String courseTitle;
 	private String courseDescription;
-	private int courseLevelID;
+	private Integer courseLevelID;
 	private Date courseCreated;
 	private Date courseStarted;
 	private Date courseEnded;
@@ -30,8 +30,8 @@ public class Course {
 	 * @param courseStarted
 	 * @param courseEnded
 	 */
-	public Course(String courseID, char[] courseCIPCode, String courseTitle, String courseDescription,
-			int courseLevelID, Date courseCreated, Date courseStarted, Date courseEnded) {
+	public Course(Integer courseID, char[] courseCIPCode, String courseTitle, String courseDescription,
+			Integer courseLevelID, Date courseCreated, Date courseStarted, Date courseEnded) {
 		super();
 		this.courseID = courseID;
 		this.courseCIPCode = courseCIPCode;
@@ -46,13 +46,13 @@ public class Course {
 	/**
 	 * @return the courseID
 	 */
-	public String getCourseID() {
+	public Integer getCourseID() {
 		return courseID;
 	}
 	/**
 	 * @param courseID the courseID to set
 	 */
-	public void setCourseID(String courseID) {
+	public void setCourseID(Integer courseID) {
 		this.courseID = courseID;
 	}
 	/**
@@ -94,13 +94,13 @@ public class Course {
 	/**
 	 * @return the courseLevelID
 	 */
-	public int getCourseLevelID() {
+	public Integer getCourseLevelID() {
 		return courseLevelID;
 	}
 	/**
 	 * @param courseLevelID the courseLevelID to set
 	 */
-	public void setCourseLevelID(int courseLevelID) {
+	public void setCourseLevelID(Integer courseLevelID) {
 		this.courseLevelID = courseLevelID;
 	}
 	/**

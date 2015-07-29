@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import database_access_object.DBConnector;
 import database_access_object.ResultSetParser;
 import model.Review;
-import model.Review;
+
 
 /**
  * @author Van Duong
@@ -49,7 +49,6 @@ public class ReviewLoader implements Loader<Review> {
 		String critiqueArtifactID;
 		Review review = null;
 		
-		
 		try {
 			assessorActorID = ResultSetParser.parseString(rs, "AssessorActorID");
 			TaskID = ResultSetParser.parseString(rs, "TaskID");
@@ -61,7 +60,7 @@ public class ReviewLoader implements Loader<Review> {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return review;
 	}
 
 }
