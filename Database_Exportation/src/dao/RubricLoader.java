@@ -15,9 +15,8 @@ import model.Rubric;
  * @author Van Duong
  *NEEDS REVISION, NOT DONE YET
  */
-public class RubricLoader implements Loader<Rubric> {
+public class RubricLoader  {
 
-	@Override
 	public ArrayList<Rubric> loadList() throws SQLException {
 		ArrayList<Rubric> rubricList = new ArrayList<Rubric>();
 		//Query for all the Rubrics
@@ -39,7 +38,6 @@ public class RubricLoader implements Loader<Rubric> {
 		return rubricList;
 	}
 
-	@Override
 	public Rubric loadSingle(ResultSet rs) {
 		// TODO Auto-generated method stub
 		return null;

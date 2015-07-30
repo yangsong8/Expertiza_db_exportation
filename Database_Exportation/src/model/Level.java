@@ -9,7 +9,7 @@ package model;
  */
 public class Level {
 	
-	private int levelID;
+	private Integer levelID;
 	private String levelLabel;
 	private String levelDescription;
 	/**
@@ -17,7 +17,7 @@ public class Level {
 	 * @param levelLabel
 	 * @param levelDescription
 	 */
-	public Level(int levelID, String levelLabel, String levelDescription) {
+	public Level(Integer levelID, String levelLabel, String levelDescription) {
 		super();
 		this.levelID = levelID;
 		this.levelLabel = levelLabel;
@@ -26,13 +26,13 @@ public class Level {
 	/**
 	 * @return the levelID
 	 */
-	public int getLevelID() {
+	public Integer getLevelID() {
 		return levelID;
 	}
 	/**
 	 * @param levelID the levelID to set
 	 */
-	public void setLevelID(int levelID) {
+	public void setLevelID(Integer levelID) {
 		this.levelID = levelID;
 	}
 	/**

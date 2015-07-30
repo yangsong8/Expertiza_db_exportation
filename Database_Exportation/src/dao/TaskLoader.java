@@ -17,9 +17,8 @@ import model.Task;
  * @author Van Duong
  *
  */
-public class TaskLoader implements Loader<Task> {
+public class TaskLoader {
 
-	@Override
 	public ArrayList<Task> loadList() throws SQLException {
 		ArrayList<Task> taskList = new ArrayList<Task>();
 		//Query for all the Tasks
@@ -41,7 +40,6 @@ public class TaskLoader implements Loader<Task> {
 		return taskList;
 	}
 
-	@Override
 	public Task loadSingle(ResultSet rs) {
 		String taskID;
 		int taskTypeID;

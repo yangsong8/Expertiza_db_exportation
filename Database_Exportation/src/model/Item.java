@@ -12,15 +12,15 @@ import java.io.File;
  */
 public class Item {
 	
-	private String itemID;
-	private File itemContent;
+	private Integer itemID;
+	private String itemContent;
 	private String artifactID;
 	/**
 	 * @param itemID
 	 * @param itemContent
 	 * @param artifactID
 	 */
-	public Item(String itemID, File itemContent, String artifactID) {
+	public Item(Integer itemID, String itemContent, String artifactID) {
 		super();
 		this.itemID = itemID;
 		this.itemContent = itemContent;
@@ -29,25 +29,25 @@ public class Item {
 	/**
 	 * @return the itemID
 	 */
-	public String getItemID() {
+	public Integer getItemID() {
 		return itemID;
 	}
 	/**
 	 * @param itemID the itemID to set
 	 */
-	public void setItemID(String itemID) {
+	public void setItemID(Integer itemID) {
 		this.itemID = itemID;
 	}
 	/**
 	 * @return the itemContent
 	 */
-	public File getItemContent() {
+	public String getItemContent() {
 		return itemContent;
 	}
 	/**
 	 * @param itemContent the itemContent to set
 	 */
-	public void setItemContent(File itemContent) {
+	public void setItemContent(String itemContent) {
 		this.itemContent = itemContent;
 	}
 	/**

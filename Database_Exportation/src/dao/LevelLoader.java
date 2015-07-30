@@ -13,15 +13,13 @@ import model.Level;
  * @author Van Duong
  *
  */
-public class LevelLoader implements Loader<Level> {
+public class LevelLoader {
 
-	@Override
 	public ArrayList<Level> loadList() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Level loadSingle(ResultSet rs) {
 		// TODO Auto-generated method stub
 		return null;

@@ -9,39 +9,31 @@ import java.util.Date;
  */
 public class Task {
 	
-	private String taskID;
+	private Integer taskID;
 	private int taskTypeID;
 	private String taskTitle;
 	private String taskPrompt;
 	private Date taskOpen;
 	private Date taskDue;
 	/**
-	 * @param taskID
+	 * @param taskID2
 	 * @param taskTypeID
 	 * @param taskTitle
 	 * @param taskPrompt
 	 * @param taskOpen
 	 * @param taskDue
 	 */
-	public Task(String taskID, int taskTypeID, String taskTitle, String taskPrompt, Date taskOpen, Date taskDue) {
-		super();
-		this.taskID = taskID;
-		this.taskTypeID = taskTypeID;
-		this.taskTitle = taskTitle;
-		this.taskPrompt = taskPrompt;
-		this.taskOpen = taskOpen;
-		this.taskDue = taskDue;
-	}
+	
 	/**
 	 * @return the taskID
 	 */
-	public String getTaskID() {
+	public Integer getTaskID() {
 		return taskID;
 	}
 	/**
 	 * @param taskID the taskID to set
 	 */
-	public void setTaskID(String taskID) {
+	public void setTaskID(Integer taskID) {
 		this.taskID = taskID;
 	}
 	/**

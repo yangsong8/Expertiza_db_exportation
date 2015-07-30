@@ -16,9 +16,8 @@ import model.Review;
  * @author Van Duong
  *NEEDS REVISION
  */
-public class ReviewLoader implements Loader<Review> {
+public class ReviewLoader {
 
-	@Override
 	public ArrayList<Review> loadList() throws SQLException {
 		ArrayList<Review> reviewList = new ArrayList<Review>();
 		//Query for all the Reviews
@@ -41,7 +40,6 @@ public class ReviewLoader implements Loader<Review> {
 	
 	}
 
-	@Override
 	public Review loadSingle(ResultSet rs) {
 		String assessorActorID;
 		String TaskID;
