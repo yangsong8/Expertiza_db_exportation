@@ -16,9 +16,8 @@ import model.Item;
  * @author Van Duong
  * NEEDS MORE CODING NOT DONE YET
  */
-public class ItemLoader implements Loader<Item> {
+public class ItemLoader{
 
-	@Override
 	public ArrayList<Item> loadList() throws SQLException {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		//Query for all the Items
@@ -40,7 +39,6 @@ public class ItemLoader implements Loader<Item> {
 		return itemList;
 	}
 
-	@Override
 	public Item loadSingle(ResultSet rs) {
 		String itemID = "";
 		File itemContent = null;

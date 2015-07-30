@@ -9,8 +9,8 @@ import java.util.Date;
  */
 public class Task {
 	
-	private String taskID;
-	private int taskTypeID;
+	private Integer taskID;
+	private Integer taskTypeID;
 	private String taskTitle;
 	private String taskPrompt;
 	private Date taskOpen;
@@ -23,7 +23,7 @@ public class Task {
 	 * @param taskOpen
 	 * @param taskDue
 	 */
-	public Task(String taskID, int taskTypeID, String taskTitle, String taskPrompt, Date taskOpen, Date taskDue) {
+	public Task(Integer taskID, Integer taskTypeID, String taskTitle, String taskPrompt, Date taskOpen, Date taskDue) {
 		super();
 		this.taskID = taskID;
 		this.taskTypeID = taskTypeID;
@@ -35,25 +35,25 @@ public class Task {
 	/**
 	 * @return the taskID
 	 */
-	public String getTaskID() {
+	public Integer getTaskID() {
 		return taskID;
 	}
 	/**
 	 * @param taskID the taskID to set
 	 */
-	public void setTaskID(String taskID) {
+	public void setTaskID(Integer taskID) {
 		this.taskID = taskID;
 	}
 	/**
 	 * @return the taskTypeID
 	 */
-	public int getTaskTypeID() {
+	public Integer getTaskTypeID() {
 		return taskTypeID;
 	}
 	/**
 	 * @param taskTypeID the taskTypeID to set
 	 */
-	public void setTaskTypeID(int taskTypeID) {
+	public void setTaskTypeID(Integer taskTypeID) {
 		this.taskTypeID = taskTypeID;
 	}
 	/**
