@@ -16,7 +16,9 @@ import model.Item;
  * @author Van Duong
  * NEEDS MORE CODING NOT DONE YET
  */
-public class ItemLoader  {
+
+public class ItemLoader{
+
 
 	public ArrayList<Item> loadList() throws SQLException {
 		ArrayList<Item> itemList = new ArrayList<Item>();
