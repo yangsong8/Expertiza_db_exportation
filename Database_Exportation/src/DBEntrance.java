@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import model.Actor;
 import model.Assignment;
 import model.Course;
+import model.Criterion;
 import model.Rubric;
 import model.Task;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+import dao.CriterionLoader;
 import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
+import dao.inserter.CriterionInserter;
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 
@@ -65,17 +68,23 @@ public class DBEntrance {
 					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
 					{
 						RubricInserter.insert(rubricList.get(rubricIndex));
+						
+						CriterionLoader criterionLoader = new CriterionLoader();
+						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getCriterionID());
+						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++){
+							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
+						}
 					}
 					
 					//for Kai, b4 Friday
-					ActorLoader actorLoader = new ActorLoader();
-					ArrayList<Actor> actorList = actorLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
-					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
-					{
-						ActorInserter.insert(actorList.get(actorIndex));
-						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).id);
-						ActorTaskInserter.insert(actorTask);
-					}
+//					ActorLoader actorLoader = new ActorLoader();
+//					ArrayList<Actor> actorList = actorLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
+//					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
+//					{
+//						ActorInserter.insert(actorList.get(actorIndex));
+//						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).id);
+//						ActorTaskInserter.insert(actorTask);
+//					}
 					
 					
 				}

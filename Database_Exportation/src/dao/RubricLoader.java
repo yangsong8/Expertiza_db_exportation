@@ -20,11 +20,11 @@ import model.Rubric;
  */
 public class RubricLoader  {
 
-	public ArrayList<Rubric> loadList(Integer taskID, Integer assigmentID) throws SQLException {
+	public ArrayList<Rubric> loadList(Integer taskID, Integer assignmentID) throws SQLException {
 		ArrayList<Rubric> rubricList = new ArrayList<Rubric>();
 		//Query for all the Rubrics
 		
-		String sql = "SELECT instructorID as taskID, NULL as CriterionID from questionnaires;"; //???
+		String sql = "SELECT questionnaire.id as RubricID due_dates.id as TaskID, questions.id as CriterionID from  questionnaires, due_dates, questions where due_dates.id = "+ taskID + "and assignment_id =" + assignmentID + ";"; //???
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -43,13 +43,15 @@ public class RubricLoader  {
 
 	public Rubric loadSingle(ResultSet rs) {
 		Integer rubricID;
+		Integer taskID;
 		Integer criterionID;
 		Rubric rubric = null;
 		try {
 			rubricID = ResultSetParser.parseInt(rs, "RubricID");
+			taskID = ResultSetParser.parseInt(rs, "TaskID");
 			criterionID = ResultSetParser.parseInt(rs, "CriterionID");
 			
-			rubric = new Rubric(rubricID, criterionID);
+			rubric = new Rubric(rubricID, taskID, criterionID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

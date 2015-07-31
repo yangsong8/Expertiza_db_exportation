@@ -7,23 +7,26 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-import model.Rubric;
+import model.Criterion;
+import model.Task;
 
 /**
  * @author Van Duong
  *
  */
-public class RubricInserter {
+public class CriterionInserter {
 
-	public static void insert(Rubric rubric) {
+	public static void insertSingle(Criterion criterion) {
 		try(
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
-				PreparedStatement pstmt = con.prepareStatement("Insert into Rubric (RubricID, TaskID, CriterionID) values (?,?,?)");
+				PreparedStatement pstmt = con.prepareStatement("Insert into Criterion (CriterionID, CriterionTitle, CriterionDescription) values (?,?,?)");
 		   )
 		   {
 				pstmt.clearParameters();
-				pstmt.setString(1, rubric.getTaskID().toString());
-				pstmt.setString(2, rubric.getCriterionID().toString());
+				pstmt.setString(1, criterion.getCriterionID().toString());
+				pstmt.setObject(2, criterion.getCriterionTitle());
+				pstmt.setObject(3, criterion.getCriterionDescription()); 
+				
 				
 				pstmt.executeUpdate();
 				System.out.println("==========Task object inserted=============");
@@ -35,5 +38,4 @@ public class RubricInserter {
 		   }
 		
 	}
-
 }
