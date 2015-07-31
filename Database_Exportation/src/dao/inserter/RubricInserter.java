@@ -3,6 +3,10 @@
  */
 package dao.inserter;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
 import model.Rubric;
 
 /**
@@ -12,7 +16,23 @@ import model.Rubric;
 public class RubricInserter {
 
 	public static void insert(Rubric rubric) {
-		// TODO Auto-generated method stub
+		try(
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				PreparedStatement pstmt = con.prepareStatement("Insert into Rubric (TaskID, CriterionID) values (?,?)");
+		   )
+		   {
+				pstmt.clearParameters();
+				pstmt.setString(1, rubric.getTaskID().toString());
+				pstmt.setString(2, rubric.getCriterionID().toString());
+				
+				pstmt.executeUpdate();
+				System.out.println("==========Task object inserted=============");
+				
+				
+		   }catch(Exception e)
+		   {e.printStackTrace();
+			   System.out.println("Database error");
+		   }
 		
 	}
 

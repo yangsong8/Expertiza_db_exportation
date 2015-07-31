@@ -10,13 +10,13 @@ package model;
  */
 public class Rubric {
 	
-	private String taskID;
-	private String criterionID;
+	private Integer taskID;
+	private Integer criterionID;
 	/**
 	 * @param taskID
 	 * @param criterionID
 	 */
-	public Rubric(String taskID, String criterionID) {
+	public Rubric(Integer taskID, Integer criterionID) {
 		super();
 		this.taskID = taskID;
 		this.criterionID = criterionID;
@@ -24,25 +24,25 @@ public class Rubric {
 	/**
 	 * @return the taskID
 	 */
-	public String getTaskID() {
+	public Integer getTaskID() {
 		return taskID;
 	}
 	/**
 	 * @param taskID the taskID to set
 	 */
-	public void setTaskID(String taskID) {
+	public void setTaskID(Integer taskID) {
 		this.taskID = taskID;
 	}
 	/**
 	 * @return the criterionID
 	 */
-	public String getCriterionID() {
+	public Integer getCriterionID() {
 		return criterionID;
 	}
 	/**
 	 * @param criterionID the criterionID to set
 	 */
-	public void setCriterionID(String criterionID) {
+	public void setCriterionID(Integer criterionID) {
 		this.criterionID = criterionID;
 	}
 	
