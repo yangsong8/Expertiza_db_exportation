@@ -8,9 +8,11 @@ import model.Rubric;
 import model.Task;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
+import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 
 /**

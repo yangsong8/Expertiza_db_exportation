@@ -17,7 +17,7 @@ import model.Rubric;
  */
 public class RubricLoader  {
 
-	public ArrayList<Rubric> loadList() throws SQLException {
+	public ArrayList<Rubric> loadList(Integer taskID, Integer assigmentID) throws SQLException {
 		ArrayList<Rubric> rubricList = new ArrayList<Rubric>();
 		//Query for all the Rubrics
 		
