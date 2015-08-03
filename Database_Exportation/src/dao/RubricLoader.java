@@ -24,7 +24,7 @@ public class RubricLoader  {
 		ArrayList<Rubric> rubricList = new ArrayList<Rubric>();
 		//Query for all the Rubrics
 		
-		String sql = "SELECT questionnaire.id as RubricID due_dates.id as TaskID, questions.id as CriterionID from  questionnaires, due_dates, questions where due_dates.id = "+ taskID + "and assignment_id =" + assignmentID + ";"; //???
+		String sql = "SELECT questionnaires.id as RubricID, due_dates.id as TaskID, questions.id as CriterionID from  questionnaires, due_dates, questions where due_dates.id = "+ taskID + "and assignment_id =" + assignmentID + ";"; //???
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
