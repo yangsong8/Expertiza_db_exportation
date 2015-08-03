@@ -8,13 +8,26 @@ import model.Course;
 import model.Rubric;
 import model.Task;
 import dao.ActorLoader;
+
+import model.Criterion;
+import model.Rubric;
+import model.Task;
+
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
+
+import dao.CriterionLoader;
+import dao.RubricLoader;
+import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
+
+import dao.inserter.CriterionInserter;
+import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 
 /**
@@ -58,7 +71,8 @@ public class DBEntrance {
 				TaskLoader taskLoader = new TaskLoader();
 				
 				ArrayList<Task> taskList = taskLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
-				for(int taskIndex = 0; taskIndex < taskList.size(); taskIndex++) {
+				for(int taskIndex = 0; taskIndex < taskList.size(); taskIndex++) 
+				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
 					//for Van, b4 Friday
@@ -66,7 +80,13 @@ public class DBEntrance {
 					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
 					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
 					{
-						RubricInserter.insert(rubricList.get(rubricIndex));
+						RubricInserter.insert(rubricList.get(rubricIndex));	
+						CriterionLoader criterionLoader = new CriterionLoader();
+						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getCriterionID());
+						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
+						{
+							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
+						}
 					}
 					
 					//for Kai, b4 Friday

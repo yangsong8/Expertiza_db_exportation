@@ -18,6 +18,7 @@ import model.Task;
  * @author Van Duong
  *
  */
+
 public class TaskLoader{
 	
 	/**
@@ -27,6 +28,7 @@ public class TaskLoader{
 	 * @throws SQLException
 	 */
 	public ArrayList<Task> loadList(int assignmentId) throws SQLException {
+
 		ArrayList<Task> taskList = new ArrayList<Task>();
 		//Query for all the Tasks
 		
@@ -46,12 +48,14 @@ public class TaskLoader{
 		dbc.close();
 		return taskList;
 	}
+
 	
 	/**
 	 * A method that will load a single task
 	 * @param rs
 	 * @return
 	 */
+
 	public Task loadSingle(ResultSet rs) {
 		Integer taskID;
 		Integer taskTypeID;

@@ -16,14 +16,13 @@ import model.Participant;
  * @author Van Duong
  *NEEDS REVISION
  */
-public class ParticipantLoader implements Loader<Participant> {
+public class ParticipantLoader {
 
-	@Override
 	public ArrayList<Participant> loadList() throws SQLException {
 		ArrayList<Participant> participantList = new ArrayList<Participant>();
 		//Query for all the Participants
 		
-		String sql = "SELECT id as 'ParticipantID', NULL as 'AppID' from participants where id = 7;";
+		String sql = "SELECT id as 'ParticipantID', NULL as 'AppID' from participants;";
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -40,7 +39,6 @@ public class ParticipantLoader implements Loader<Participant> {
 		return participantList;
 	}
 
-	@Override
 	public Participant loadSingle(ResultSet rs) {
 		int appID;
 		String participantID;

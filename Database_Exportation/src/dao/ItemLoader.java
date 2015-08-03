@@ -16,13 +16,14 @@ import model.Item;
  * @author Van Duong
  * NEEDS MORE CODING NOT DONE YET
  */
+
 public class ItemLoader{
 
 	public ArrayList<Item> loadList() throws SQLException {
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		//Query for all the Items
 		
-		String sql = "SELECT id as 'ItemID', name as 'itemTitle', info as 'itemDescription', NULL as 'itemLevelID', NULL as 'ItemCIPCode', created_at as 'ItemCreated', NULL as 'ItemStarted', NULL as ItemEnded FROM Items where id=155;";
+		String sql = "SELECT 0 as 'itemID', participants.submitted_hyperlinks as itemDescription, FROM Items;";
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -40,13 +41,13 @@ public class ItemLoader{
 	}
 
 	public Item loadSingle(ResultSet rs) {
-		String itemID = "";
-		File itemContent = null;
+		Integer itemID;
+		String itemContent = "";
 		String artifactID = "";
 		Item item = null;
 		
 		try {
-			itemID = ResultSetParser.parseString(rs, itemID);
+			itemID = ResultSetParser.parseInt(rs, "itemID");
 			//itemContent = 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
