@@ -1,14 +1,18 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import mapping.ActorTask;
 import model.Actor;
 import model.Assignment;
 import model.Course;
 import model.Rubric;
 import model.Task;
+import dao.ActorLoader;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
 import dao.TaskLoader;
+import dao.inserter.ActorInserter;
+import dao.inserter.ActorTaskInserter;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.TaskInserter;
@@ -67,12 +71,12 @@ public class DBEntrance {
 					
 					//for Kai, b4 Friday
 					ActorLoader actorLoader = new ActorLoader();
-					ArrayList<Actor> actorList = actorLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
+					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
 					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
 					{
-						ActorInserter.insert(actorList.get(actorIndex));
-						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).id);
-						ActorTaskInserter.insert(actorTask);
+						ActorInserter.insertSingle(actorList.get(actorIndex));
+						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).getActorID());
+						ActorTaskInserter.insertSingle(actorTask);
 					}
 					
 					

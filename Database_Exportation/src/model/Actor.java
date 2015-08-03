@@ -8,9 +8,9 @@ package model;
  * @author Van Duong
  */
 public class Actor {
-	private String actorID;
+	private Integer actorID;
 
-	public Actor(String actorID) {
+	public Actor(Integer actorID) {
 		super();
 		this.actorID = actorID;
 	}
@@ -18,14 +18,14 @@ public class Actor {
 	/**
 	 * @return the actorID
 	 */
-	public String getActorID() {
+	public Integer getActorID() {
 		return actorID;
 	}
 
 	/**
 	 * @param actorID the actorID to set
 	 */
-	public void setActorID(String actorID) {
+	public void setActorID(Integer actorID) {
 		this.actorID = actorID;
 	}
 
