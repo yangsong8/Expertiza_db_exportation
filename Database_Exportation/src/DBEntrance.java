@@ -1,31 +1,28 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import mapping.ActorTask;
 import model.Actor;
 import model.Assignment;
 import model.Course;
+import model.Participant;
 import model.Rubric;
 import model.Task;
 import dao.ActorLoader;
-
 import model.Criterion;
 import model.Rubric;
 import model.Task;
-
 import dao.AssignmentLoader;
 import dao.CourseLoader;
-
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
-
 import dao.CriterionLoader;
 import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
-
 import dao.inserter.CriterionInserter;
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
@@ -82,14 +79,23 @@ public class DBEntrance {
 					{
 						RubricInserter.insert(rubricList.get(rubricIndex));	
 						CriterionLoader criterionLoader = new CriterionLoader();
-						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getCriterionID());
+						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getRubricID());
 						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
 						{
 							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
+							//for Van
+							LevelLoader levelLoader = new LevelLoader();
+							//retuen a list of levels for each question
+							//1) if there are question advices associated with this question, use the advices,
+							//2) if not, read the max/min level from questionnaire table in Expertiza
+							ArrayList<Level> levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
+							for(int levelIndex=0;levelIndex<levelList.size;levelIndex++)
+							{
+								LevelInserter.insertSingle(levelList.get(levelIndex));
+							}
 						}
 					}
 					
-					//for Kai, b4 Friday
 					ActorLoader actorLoader = new ActorLoader();
 					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
 					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
@@ -97,6 +103,14 @@ public class DBEntrance {
 						ActorInserter.insertSingle(actorList.get(actorIndex));
 						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).getActorID());
 						ActorTaskInserter.insertSingle(actorTask);
+						
+						//for Kai
+						ParticipantLoader participantLoader = new ParticipantLoader();
+						ArrayList<Participant> participantList = participantLoader.loadList(actorList.get(actorIndex).getActorID());
+						for(int participantIndex=0; particpantIndex<participantList.size();participantIndex++)
+						{
+							ParticipantInswerter.insertSingle(participantList.get(participantIndex));
+						}
 					}
 					
 					
