@@ -15,7 +15,7 @@ public class Task {
 
 
 	private String taskTitle;
-	private String taskPrompt;
+	private String taskDescription;
 	private Date taskOpen;
 	private Date taskDue;
 	/**
@@ -28,12 +28,12 @@ public class Task {
 	 */
 
 	
-	public Task(Integer taskID, Integer taskTypeID, String taskTitle, String taskPrompt, Date taskOpen, Date taskDue) {
+	public Task(Integer taskID, Integer taskTypeID, String taskTitle, String taskDescription, Date taskOpen, Date taskDue) {
 		super();
 		this.taskID = taskID;
 		this.taskTypeID = taskTypeID;
 		this.taskTitle = taskTitle;
-		this.taskPrompt = taskPrompt;
+		this.taskDescription = taskDescription;
 		this.taskOpen = taskOpen;
 		this.taskDue = taskDue;
 	}
@@ -77,14 +77,14 @@ public class Task {
 	/**
 	 * @return the taskPrompt
 	 */
-	public String getTaskPrompt() {
-		return taskPrompt;
+	public String getTaskDescription() {
+		return taskDescription;
 	}
 	/**
 	 * @param taskPrompt the taskPrompt to set
 	 */
-	public void setTaskPrompt(String taskPrompt) {
-		this.taskPrompt = taskPrompt;
+	public void setTaskDescription(String taskDescription) {
+		this.taskDescription = taskDescription;
 	}
 	/**
 	 * @return the taskOpen

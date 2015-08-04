@@ -19,7 +19,7 @@ public class AssignmentInserter{
 	public static void insertSingle(Assignment assignment) {
 		try(
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
-				PreparedStatement pstmt = con.prepareStatement("Insert into Assignment (AssignmentID, AssignmentCIPCode, AssignmentTitle, AssignmentDescription) values (?,?,?,?)");
+				PreparedStatement pstmt = con.prepareStatement("Insert into Assignment (AssignmentID, AssignmentCIPCode, AssignmentTitle, AssignmentDescription, CourseID) values (?,?,?,?,?)");
 		   )
 		   {
 				pstmt.clearParameters();
@@ -27,6 +27,7 @@ public class AssignmentInserter{
 				pstmt.setString(2, null);
 				pstmt.setObject(3, assignment.getAssignTitle()); 
 				pstmt.setObject(4, assignment.getAssignDescription()); 
+				pstmt.setString(5, assignment.getCourseID().toString());
 				
 				pstmt.executeUpdate();
 				System.out.println("==========Assignment object inserted=============");

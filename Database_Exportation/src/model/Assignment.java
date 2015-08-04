@@ -14,18 +14,36 @@ public class Assignment {
 	private char[] assignCIPCode = new char[7];
 	private String assignTitle;
 	private String assignDescription;
+	private Integer courseID;
+	
+	
 	/**
 	 * @param assigmentID
 	 * @param assignCIPCode
 	 * @param assignTitle
 	 * @param assignDescription
+	 * @param courseID
 	 */
-	public Assignment(Integer assigmentID, char[] assignCIPCode, String assignTitle, String assignDescription) {
+	public Assignment(Integer assigmentID, char[] assignCIPCode,
+			String assignTitle, String assignDescription, Integer courseID) {
 		super();
 		this.assigmentID = assigmentID;
 		this.assignCIPCode = assignCIPCode;
 		this.assignTitle = assignTitle;
 		this.assignDescription = assignDescription;
+		this.courseID = courseID;
+	}
+	/**
+	 * @return the courseID
+	 */
+	public Integer getCourseID() {
+		return courseID;
+	}
+	/**
+	 * @param courseID the courseID to set
+	 */
+	public void setCourseID(Integer courseID) {
+		this.courseID = courseID;
 	}
 	/**
 	 * @return the assigmentID

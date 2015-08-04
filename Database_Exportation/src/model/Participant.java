@@ -4,19 +4,19 @@
 package model;
 
 /**
- * A class represents the Participant object in PRML
+ * A class represents a Participant object in PRML
  * @author kma
  * @author Van Duong
  */
 public class Participant {
 	
-	private String participantID;
-	private int appID;
+	private Integer participantID;
+	private Integer appID;
 	/**
 	 * @param participantID
 	 * @param appID
 	 */
-	public Participant(String participantID, int appID) {
+	public Participant(Integer participantID, Integer appID) {
 		super();
 		this.participantID = participantID;
 		this.appID = appID;
@@ -24,26 +24,27 @@ public class Participant {
 	/**
 	 * @return the participantID
 	 */
-	public String getParticipantID() {
+	public Integer getParticipantID() {
 		return participantID;
 	}
 	/**
 	 * @param participantID the participantID to set
 	 */
-	public void setParticipantID(String participantID) {
+	public void setParticipantID(Integer participantID) {
 		this.participantID = participantID;
 	}
 	/**
 	 * @return the appID
 	 */
-	public int getAppID() {
+	public Integer getAppID() {
 		return appID;
 	}
 	/**
 	 * @param appID the appID to set
 	 */
-	public void setAppID(int appID) {
+	public void setAppID(Integer appID) {
 		this.appID = appID;
 	}
+	
 	
 }
