@@ -1,6 +1,5 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 import mapping.ActorTask;
 import model.Actor;
@@ -19,13 +18,16 @@ import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
 import dao.CriterionLoader;
+import dao.LevelLoader;
 import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
+import dao.inserter.LevelInserter;
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
+import model.Level;
 
 /**
  * 
@@ -72,7 +74,6 @@ public class DBEntrance {
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
-					//for Van, b4 Friday
 					RubricLoader rubricLoader = new RubricLoader();
 					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
 					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
@@ -85,11 +86,11 @@ public class DBEntrance {
 							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
 							//for Van
 							LevelLoader levelLoader = new LevelLoader();
-							//retuen a list of levels for each question
-							//1) if there are question advices associated with this question, use the advices,
+							//return a list of levels for each question
+							//1) if there are question advice associated with this question, use the advice,
 							//2) if not, read the max/min level from questionnaire table in Expertiza
-							ArrayList<Level> levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
-							for(int levelIndex=0;levelIndex<levelList.size;levelIndex++)
+							ArrayList<Level>levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
+							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
 							{
 								LevelInserter.insertSingle(levelList.get(levelIndex));
 							}
