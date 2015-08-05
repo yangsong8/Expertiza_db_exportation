@@ -1,6 +1,5 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
 
 import mapping.ActorParticipant;
 import mapping.ActorTask;
@@ -22,6 +21,7 @@ import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
 import dao.CriterionLoader;
+import dao.LevelLoader;
 import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorParticipantInserter;
@@ -29,9 +29,14 @@ import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
 import dao.inserter.EnrollmentInserter;
+
+
+import dao.inserter.LevelInserter;
 import dao.inserter.ParticipantInserter;
+
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
+import model.Level;
 
 /**
  * 
@@ -78,29 +83,30 @@ public class DBEntrance {
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
-					//for Van, b4 Friday
-//					RubricLoader rubricLoader = new RubricLoader();
-//					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
-//					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
-//					{
-//						RubricInserter.insert(rubricList.get(rubricIndex));	
-//						CriterionLoader criterionLoader = new CriterionLoader();
-//						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getRubricID());
-//						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
-//						{
-//							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
-//							//for Van
-//							LevelLoader levelLoader = new LevelLoader();
-//							//retuen a list of levels for each question
-//							//1) if there are question advices associated with this question, use the advices,
-//							//2) if not, read the max/min level from questionnaire table in Expertiza
-//							ArrayList<Level> levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
-//							for(int levelIndex=0;levelIndex<levelList.size;levelIndex++)
-//							{
-//								LevelInserter.insertSingle(levelList.get(levelIndex));
-//							}
-//						}
-//					}
+
+					RubricLoader rubricLoader = new RubricLoader();
+					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
+					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
+					{
+						RubricInserter.insert(rubricList.get(rubricIndex));	
+						CriterionLoader criterionLoader = new CriterionLoader();
+						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getRubricID());
+						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
+						{
+							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
+							//for Van
+							LevelLoader levelLoader = new LevelLoader();
+							//return a list of levels for each question
+							//1) if there are question advice associated with this question, use the advice,
+							//2) if not, read the max/min level from questionnaire table in Expertiza
+							ArrayList<Level>levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
+							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
+							{
+								LevelInserter.insertSingle(levelList.get(levelIndex));
+							}
+						}
+					}
+
 					
 					ActorLoader actorLoader = new ActorLoader();
 					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());

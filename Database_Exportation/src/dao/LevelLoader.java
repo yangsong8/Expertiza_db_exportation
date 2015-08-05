@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database_access_object.DBConnector;
+import model.Criterion;
+import model.Level;
 import model.Level;
 
 /**
@@ -15,9 +18,25 @@ import model.Level;
  */
 public class LevelLoader {
 
-	public ArrayList<Level> loadList() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Level> loadList(Criterion criterion, Integer integer) throws SQLException {
+		ArrayList<Level> levelList = new ArrayList<Level>();
+		//Query for all the levels
+		
+		String sql = "SELECT " + ";"; //???
+		
+		DBConnector dbc = new DBConnector();
+		ResultSet rs = dbc.query(sql);
+		while(rs.next()){
+			Level level = loadSingle(rs);
+			if(level == null) {
+				
+			} else {
+				levelList.add(level);
+			}
+		}
+		rs.close();
+		dbc.close();
+		return levelList;
 	}
 
 	public Level loadSingle(ResultSet rs) {
