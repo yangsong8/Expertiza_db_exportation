@@ -1,10 +1,12 @@
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import mapping.ActorParticipant;
 import mapping.ActorTask;
 import model.Actor;
 import model.Assignment;
 import model.Course;
+import model.Enrollment;
 import model.Participant;
 import model.Rubric;
 import model.Task;
@@ -22,11 +24,16 @@ import dao.inserter.AssignmentInserter;
 import dao.CriterionLoader;
 import dao.LevelLoader;
 import dao.RubricLoader;
+
+import dao.TaskLoader;
+import dao.inserter.ActorParticipantInserter;
+import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
+import dao.inserter.EnrollmentInserter;
+
 
 import dao.inserter.LevelInserter;
-
 import dao.inserter.ParticipantInserter;
 
 import dao.inserter.RubricInserter;
@@ -117,8 +124,13 @@ public class DBEntrance {
 						for(int participantIndex=0; participantIndex<participantList.size();participantIndex++)
 						{
 							ParticipantInserter.insertSingle(participantList.get(participantIndex));
-							//ActorParticipant actorParticipant = new ActorParticipant(participantList.get(participantIndex).getParticipantID(),actorList.get(actorIndex).getActorID(), ?);
 							
+							ActorParticipant actorParticipant = new ActorParticipant(participantList.get(participantIndex).getParticipantID(),actorList.get(actorIndex).getActorID(), null);
+							ActorParticipantInserter.insertSingle(actorParticipant);
+							
+							Enrollment enrollment = new Enrollment(participantList.get(participantIndex).getParticipantID(),participantList.get(participantIndex).getAppID(),courseList.get(courseIndex).getCourseID());
+							//should check duplicated record before insert
+							EnrollmentInserter.insertSingle(enrollment);
 						}
 					}
 					
