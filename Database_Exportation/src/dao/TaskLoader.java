@@ -32,7 +32,7 @@ public class TaskLoader{
 		ArrayList<Task> taskList = new ArrayList<Task>();
 		//Query for all the Tasks
 		
-		String sql = "SELECT due_dates.id as 'TaskID', due_dates.deadline_type_id as 'TaskTypeID', deadline_types.name as 'TaskTitle', due_dates.description_url as 'TaskPrompt', NULL as 'TaskOpen', due_dates.due_at as 'TaskDue' from due_dates, deadline_types where due_dates.deadline_type_id=deadline_types.id and assignment_id = "+assignmentId+";";
+		String sql = "SELECT due_dates.id as 'TaskID', due_dates.deadline_type_id as 'TaskTypeID', deadline_types.name as 'TaskTitle', due_dates.description_url as 'TaskDescription', NULL as 'TaskOpen', due_dates.due_at as 'TaskDue' from due_dates, deadline_types where due_dates.deadline_type_id=deadline_types.id and assignment_id = "+assignmentId+";";
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -68,7 +68,7 @@ public class TaskLoader{
 			taskID = ResultSetParser.parseInt(rs, "TaskID");
 			taskTypeID = ResultSetParser.parseInt(rs, "TaskTypeID");
 			taskTitle = ResultSetParser.parseString(rs, "TaskTitle");
-			taskPrompt = ResultSetParser.parseString(rs, "TaskPrompt");
+			taskPrompt = ResultSetParser.parseString(rs, "TaskDescription");
 			taskOpen = ResultSetParser.parseDate(rs, "TaskOpen");
 			taskDue = ResultSetParser.parseDate(rs, "TaskDue");
 			task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue);

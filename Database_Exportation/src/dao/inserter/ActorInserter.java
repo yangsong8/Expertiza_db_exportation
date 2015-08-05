@@ -34,7 +34,8 @@ public class ActorInserter {
 				} else {
 					pstmt.clearParameters();
 					pstmt.setString(1, actor.getActorID().toString());
-					System.out.println(pstmt.toString());
+					//For testing reason
+					//System.out.println(pstmt.toString());
 					
 					
 					pstmt.executeUpdate();

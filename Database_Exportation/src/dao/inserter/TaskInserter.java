@@ -19,14 +19,14 @@ public class TaskInserter {
 	public static void insertSingle(Task task) {
 		try(
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
-				PreparedStatement pstmt = con.prepareStatement("Insert into Task (TaskID, TaskTypeID, TaskTitle, TaskPrompt, TaskOpen, TaskDue) values (?,?,?,?,?,?)");
+				PreparedStatement pstmt = con.prepareStatement("Insert into Task (TaskID, TaskTypeID, TaskTitle, TaskDescription, TaskOpen, TaskDue) values (?,?,?,?,?,?)");
 		   )
 		   {
 				pstmt.clearParameters();
 				pstmt.setString(1, task.getTaskID().toString());
 				pstmt.setString(2, task.getTaskTypeID().toString());
 				pstmt.setObject(3, task.getTaskTitle()); 
-				pstmt.setObject(4, task.getTaskPrompt()); 
+				pstmt.setObject(4, task.getTaskDescription()); 
 				pstmt.setObject(5, null); 
 				pstmt.setObject(6, task.getTaskDue()); 
 				

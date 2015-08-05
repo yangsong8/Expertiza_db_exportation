@@ -11,7 +11,7 @@ import model.Level;
  */
 public class LevelInserter {
 
-	 static void insertSingle(Level level) {
+	public static void insertSingle(Level level) {
 		// TODO Auto-generated method stub
 		
 	}

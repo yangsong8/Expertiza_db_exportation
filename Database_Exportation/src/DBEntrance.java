@@ -14,6 +14,7 @@ import model.Rubric;
 import model.Task;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+import dao.ParticipantLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
@@ -24,7 +25,11 @@ import dao.TaskLoader;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
+
 import dao.inserter.LevelInserter;
+
+import dao.inserter.ParticipantInserter;
+
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 import model.Level;
@@ -74,6 +79,7 @@ public class DBEntrance {
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
+
 					RubricLoader rubricLoader = new RubricLoader();
 					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
 					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
@@ -96,6 +102,7 @@ public class DBEntrance {
 							}
 						}
 					}
+
 					
 					ActorLoader actorLoader = new ActorLoader();
 					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
@@ -108,9 +115,11 @@ public class DBEntrance {
 						//for Kai
 						ParticipantLoader participantLoader = new ParticipantLoader();
 						ArrayList<Participant> participantList = participantLoader.loadList(actorList.get(actorIndex).getActorID());
-						for(int participantIndex=0; particpantIndex<participantList.size();participantIndex++)
+						for(int participantIndex=0; participantIndex<participantList.size();participantIndex++)
 						{
-							ParticipantInswerter.insertSingle(participantList.get(participantIndex));
+							ParticipantInserter.insertSingle(participantList.get(participantIndex));
+							//ActorParticipant actorParticipant = new ActorParticipant(participantList.get(participantIndex).getParticipantID(),actorList.get(actorIndex).getActorID(), ?);
+							
 						}
 					}
 					
