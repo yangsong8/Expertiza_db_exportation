@@ -20,7 +20,7 @@ public class ActorInserter {
 
 	public static void insertSingle(Actor actor) {
 		try(	
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
 				//PreparedStatement queryPstmt = con.prepareStatement("select count(*) from Actor where id="+ actor.getActorID().toString()+";");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Actor (ActorID) values (?);");
 				Statement st = con.createStatement();

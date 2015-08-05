@@ -18,7 +18,7 @@ public class TaskInserter {
 	
 	public static void insertSingle(Task task) {
 		try(
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Task (TaskID, TaskTypeID, TaskTitle, TaskDescription, TaskOpen, TaskDue) values (?,?,?,?,?,?)");
 		   )
 		   {

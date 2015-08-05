@@ -18,7 +18,7 @@ public class CriterionInserter {
 
 	public static void insertSingle(Criterion criterion) {
 		try(
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Criterion (CriterionID, CriterionTitle, CriterionDescription) values (?,?,?)");
 		   )
 		   {
