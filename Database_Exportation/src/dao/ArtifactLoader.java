@@ -24,13 +24,13 @@ public class ArtifactLoader {
 		String sql = "";
 		if(typeID==1)//submission: we cannot use team_id as artifact id! we have to rely on auto-incremental
 		{
-			sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactBegin, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
+			sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
 		} else if(typeID == 2) //peer-review: can be multiple responses, so the size could >1
 		{
-			sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactBegin, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
+			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
 		} else if( typeID == 3) //3 (peer-review), can be multiple responses, so the size could >1
 		{
-			sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactBegin, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
+			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
 		}
 		
 		DBConnector dbc = new DBConnector();
