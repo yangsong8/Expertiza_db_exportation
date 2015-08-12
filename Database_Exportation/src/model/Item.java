@@ -3,7 +3,6 @@
  */
 package model;
 
-import java.io.File;
 
 /**
  * A class that represents an Item object

@@ -12,11 +12,11 @@ import java.util.Date;
  */
 public class Artifact {
 	
-	private String artifactID;
-	private String actorID;
-	private String taskID;
+	private Integer artifactID;
+	private Integer actorID;
+	private Integer taskID;
 	private String artifactContent;
-	private int artifactCharLength;
+	private Integer artifactCharLength;
 	private Date artifactOpen;
 	private Date artifactEnd;
 	
@@ -29,7 +29,7 @@ public class Artifact {
 	 * @param artifactOpen
 	 * @param artifactEnd
 	 */
-	public Artifact(String artifactID, String actorID, String taskID, String artifactContent, int artifactCharLength,
+	public Artifact(Integer artifactID, Integer actorID, Integer taskID, String artifactContent, Integer artifactCharLength,
 			Date artifactOpen, Date artifactEnd) {
 		super();
 		this.artifactID = artifactID;
@@ -44,42 +44,42 @@ public class Artifact {
 	/**
 	 * @return the artifactID
 	 */
-	public String getArtifactID() {
+	public Integer getArtifactID() {
 		return artifactID;
 	}
 
 	/**
 	 * @param artifactID the artifactID to set
 	 */
-	public void setArtifactID(String artifactID) {
+	public void setArtifactID(Integer artifactID) {
 		this.artifactID = artifactID;
 	}
 
 	/**
 	 * @return the actorID
 	 */
-	public String getActorID() {
+	public Integer getActorID() {
 		return actorID;
 	}
 
 	/**
 	 * @param actorID the actorID to set
 	 */
-	public void setActorID(String actorID) {
+	public void setActorID(Integer actorID) {
 		this.actorID = actorID;
 	}
 
 	/**
 	 * @return the taskID
 	 */
-	public String getTaskID() {
+	public Integer getTaskID() {
 		return taskID;
 	}
 
 	/**
 	 * @param taskID the taskID to set
 	 */
-	public void setTaskID(String taskID) {
+	public void setTaskID(Integer taskID) {
 		this.taskID = taskID;
 	}
 
@@ -100,14 +100,14 @@ public class Artifact {
 	/**
 	 * @return the artifactCharLength
 	 */
-	public int getArtifactCharLength() {
+	public Integer getArtifactCharLength() {
 		return artifactCharLength;
 	}
 
 	/**
 	 * @param artifactCharLength the artifactCharLength to set
 	 */
-	public void setArtifactCharLength(int artifactCharLength) {
+	public void setArtifactCharLength(Integer artifactCharLength) {
 		this.artifactCharLength = artifactCharLength;
 	}
 
