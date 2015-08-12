@@ -18,7 +18,7 @@ public class CriterionInserter {
 
 	public static void insertSingle(Criterion criterion) {
 		try(
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Criterion (CriterionID, CriterionTitle, CriterionDescription) values (?,?,?)");
 		   )
 		   {
@@ -29,7 +29,7 @@ public class CriterionInserter {
 				
 				
 				pstmt.executeUpdate();
-				System.out.println("==========Task object inserted=============");
+				System.out.println("==========Criterion object inserted=============");
 				
 				
 		   }catch(Exception e)

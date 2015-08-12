@@ -24,7 +24,7 @@ public class CourseLoader{
 		//Query for all the courses
 		//String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses;";
 		//Query for course 155
-		String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses where id=155;";
+		String sql = "SELECT id as 'CourseID', name as 'CourseTitle', info as 'CourseDescription', NULL as 'CourseLevelID', NULL as 'CourseCIPCode', created_at as 'CourseCreated', NULL as 'CourseStarted', NULL as CourseEnded FROM courses where id = 155";
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);

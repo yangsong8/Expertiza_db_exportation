@@ -16,7 +16,7 @@ public class CourseInserter
 	public static void insertSingle(Course course)
 	{
 		try(
-				Connection con=DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
 				PreparedStatement pstmt=con.prepareStatement("Insert into Course (CourseID, CourseCIPCode, CourseTitle, CourseDescription, CourseLevelID, CourseCreated, CourseStarted, CourseEnded) values (?,?,?,?,?,?,?,?)");
 		   )
 		   {

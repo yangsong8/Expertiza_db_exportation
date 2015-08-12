@@ -1,4 +1,4 @@
-import java.sql.SQLException;
+	import java.sql.SQLException;
 import java.util.ArrayList;
 
 import mapping.ActorParticipant;
@@ -85,14 +85,14 @@ public class DBEntrance {
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
-
-//					RubricLoader rubricLoader = new RubricLoader();
-//					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskID(), assignmentList.get(assignmentIndex).getAssigmentID());
-//					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
-//					{
-//						RubricInserter.insert(rubricList.get(rubricIndex));	
-//						CriterionLoader criterionLoader = new CriterionLoader();
-//						ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex).getRubricID());
+					RubricLoader rubricLoader = new RubricLoader();
+					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getTaskID());
+					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
+					{
+						RubricInserter.insert(rubricList.get(rubricIndex));	
+						
+						//CriterionLoader criterionLoader = new CriterionLoader();
+						//ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex));
 //						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
 //						{
 //							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
@@ -101,13 +101,13 @@ public class DBEntrance {
 //							//return a list of levels for each question
 //							//1) if there are question advice associated with this question, use the advice,
 //							//2) if not, read the max/min level from questionnaire table in Expertiza
-//							ArrayList<Level>levelList = levelLoader.loadList(criterionList.get(criterionIndex),rubricList.get(rubricIndex).getRubricID());
+//							ArrayList<Level>levelList = levelLoader.loadList(rubricList.get(rubricIndex), criterionList.get(criterionIndex));
 //							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
 //							{
 //								LevelInserter.insertSingle(levelList.get(levelIndex));
 //							}
 //						}
-//					}
+					}
 
 					
 					ActorLoader actorLoader = new ActorLoader();

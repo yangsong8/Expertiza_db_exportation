@@ -18,7 +18,7 @@ public class AssignmentInserter{
 
 	public static void insertSingle(Assignment assignment) {
 		try(
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Assignment (AssignmentID, AssignmentCIPCode, AssignmentTitle, AssignmentDescription, CourseID) values (?,?,?,?,?)");
 		   )
 		   {

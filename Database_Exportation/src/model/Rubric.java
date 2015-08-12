@@ -12,16 +12,15 @@ public class Rubric {
 	
 	private Integer taskID;
 	private Integer criterionID;
-	private Integer rubricID;
 	/**
 	 * @param taskID
 	 * @param criterionID
 	 */
-	public Rubric(Integer taskID, Integer criterionID, Integer rubricID) {
+	public Rubric(Integer taskID, Integer criterionID) {
 		super();
 		this.taskID = taskID;
 		this.criterionID = criterionID;
-		this.rubricID = rubricID;
+		
 	}
 	/**
 	 * @return the taskID
@@ -29,18 +28,8 @@ public class Rubric {
 	public Integer getTaskID() {
 		return taskID;
 	}
-	/**
-	 * @return the rubricID
-	 */
-	public Integer getRubricID() {
-		return rubricID;
-	}
-	/**
-	 * @param rubricID the rubricID to set
-	 */
-	public void setRubricID(Integer rubricID) {
-		this.rubricID = rubricID;
-	}
+	
+	
 	/**
 	 * @param taskID the taskID to set
 	 */
