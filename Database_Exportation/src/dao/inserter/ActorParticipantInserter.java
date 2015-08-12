@@ -34,7 +34,7 @@ public class ActorParticipantInserter {
 					pstmt.setString(1, actorParticipant.getActorID().toString());
 					pstmt.setString(2, actorParticipant.getParticipantID().toString());
 					//temp solution for roleID
-					pstmt.setNull(3, java.sql.Types.INTEGER);
+					pstmt.setString(3, "5");
 					
 					
 					pstmt.executeUpdate();

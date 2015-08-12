@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import mapping.ActorParticipant;
 import mapping.ActorTask;
 import model.Actor;
+import model.Artifact;
 import model.Assignment;
 import model.Course;
 import model.Enrollment;
@@ -14,6 +15,7 @@ import dao.ActorLoader;
 import model.Criterion;
 import model.Rubric;
 import model.Task;
+import dao.ArtifactLoader;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
 import dao.ParticipantLoader;
@@ -25,15 +27,13 @@ import dao.LevelLoader;
 import dao.RubricLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorParticipantInserter;
+import dao.inserter.ArtifactInserter;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
 import dao.inserter.EnrollmentInserter;
-
-
 import dao.inserter.LevelInserter;
 import dao.inserter.ParticipantInserter;
-
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 import model.Level;
@@ -116,7 +116,7 @@ public class DBEntrance {
 						ActorTask actorTask = new ActorTask(taskList.get(taskIndex).getTaskID(),actorList.get(actorIndex).getActorID());
 						ActorTaskInserter.insertSingle(actorTask);
 						
-						//for Kai
+						//load participants for each task
 						ParticipantLoader participantLoader = new ParticipantLoader();
 						ArrayList<Participant> participantList = participantLoader.loadList(actorList.get(actorIndex).getActorID());
 						for(int participantIndex=0; participantIndex<participantList.size();participantIndex++)
@@ -129,6 +129,24 @@ public class DBEntrance {
 							Enrollment enrollment = new Enrollment(participantList.get(participantIndex).getParticipantID(),participantList.get(participantIndex).getAppID(),courseList.get(courseIndex).getCourseID());
 							//should check duplicated record before insert
 							EnrollmentInserter.insertSingle(enrollment);
+						}
+						
+						//for each actor_task, load the *submission*, we deal submitted hyperlinks only at this time
+						// if task type id ==1 (submission), create artifact object and load the submitted hyperlinks as items
+						//                   2 (peer-review), create artifact object for each response
+						//                   5 (meta-review), create artifact object for each response
+						ArtifactLoader artifactLoader = new ArtifactLoader();
+						//if task type id ==1 (submission), only 1 artifact for each actor in each task, the size of the list is 1
+						//                  2 (peer-review), can be multiple responses, so the size could >1
+						//                  3 (peer-review), can be multiple responses, so the size could >1
+						ArrayList<Artifact> artifactList = artifactLoader.loadList(actorTask, taskList.get(taskIndex).getTaskTypeID());
+						for(int artifactIndex =0; artifactIndex<artifactList.size(); artifactIndex++)
+						{
+							ArtifactInserter.insertSingle(artifactList.get(artifactIndex));
+							if (taskList.get(taskIndex).getTaskTypeID()==1)
+							{
+								//load items
+							}
 						}
 					}
 					
