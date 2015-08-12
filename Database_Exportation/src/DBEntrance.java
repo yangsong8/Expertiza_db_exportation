@@ -22,9 +22,11 @@ import dao.ParticipantLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
+import dao.inserter.AssignmentInserter;
 import dao.CriterionLoader;
 import dao.LevelLoader;
 import dao.RubricLoader;
+
 import dao.TaskLoader;
 import dao.inserter.ActorParticipantInserter;
 import dao.inserter.ArtifactInserter;

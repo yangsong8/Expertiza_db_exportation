@@ -22,7 +22,7 @@ public class ParticipantInserter {
 	public static void insertSingle(Participant participant)
 	{
 		try(
-				Connection con=DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
 				PreparedStatement pstmt=con.prepareStatement("Insert into Participant (ParticipantID, AppID) values (?,?)");
 				Statement st = con.createStatement();
 		   )

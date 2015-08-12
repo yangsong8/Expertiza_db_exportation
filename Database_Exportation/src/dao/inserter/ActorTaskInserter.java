@@ -10,7 +10,7 @@ import mapping.ActorTask;
 public class ActorTaskInserter {
 	public static void insertSingle(ActorTask actorTask) {
 		try(
-				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
+				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "root");
 				PreparedStatement pstmt = con.prepareStatement("Insert into ActorTask (ActorID, TaskID) values (?, ?)");
 		   )
 		   {
