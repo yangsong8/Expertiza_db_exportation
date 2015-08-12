@@ -15,7 +15,7 @@ public class DBConnector {
 
 	   //  Database credentials
 	   static final String USER = "root";
-	   static final String PASS = "root";
+	   static final String PASS = "";
 	   
 	   private Connection conn;
 	   private Statement stmt;
@@ -36,7 +36,6 @@ public class DBConnector {
 	      //STEP 3: Open a connection
 	      System.out.println("Connecting to database...");
 	      conn = DriverManager.getConnection(DB_URL,USER,PASS);
-	      System.out.println("still working at line 39 ");
 
 	      //STEP 4: Execute a query
 	      System.out.println("Creating statement...");

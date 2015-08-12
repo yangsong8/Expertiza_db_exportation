@@ -24,7 +24,7 @@ public class ItemLoader{
 		//Query for all the Items
 		
 		String sql = "SELECT 0 as 'itemID', participants.submitted_hyperlinks as itemDescription, FROM Items;";
-		
+		System.out.println(sql);
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
 		while(rs.next()){

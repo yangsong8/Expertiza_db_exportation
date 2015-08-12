@@ -26,7 +26,7 @@ public class AssignmentLoader{
 	public ArrayList<Assignment> loadList(int courseId) throws SQLException {
 		ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
 		String sql = "SELECT id as 'AssignmentID', name as 'AssignmentTitle', spec_location as 'AssignmentDescription', NULL as 'AssignmentCIPCode', course_id as 'CourseID' from assignments where course_id="+courseId+" ;";
-		System.out.println(sql);
+		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
 		while(rs.next()){

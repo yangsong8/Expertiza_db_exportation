@@ -19,12 +19,13 @@ import model.Task;
  */
 public class CriterionLoader {
 
-	public ArrayList<Criterion> loadList(int rubricID) throws SQLException {
+	public ArrayList<Criterion> loadList(Rubric rubric) throws SQLException {
 		ArrayList<Criterion> criterionList = new ArrayList<Criterion>();
 		//Query for all the Tasks
 		
-		String sql = "SELECT questions.id as CriterionID, NULL as CriterionTitle, NULL as CriterionDescription from questions where questionnaires_id =" + rubricID +";";
+		String sql = "SELECT questions.id as 'CriterionID', NULL as 'CriterionTitle', NULL as 'CriterionDescription' from questions where questionnaire_id =" + rubric. +";";
 		
+		System.out.println(sql);
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
 		while(rs.next()){
@@ -46,7 +47,7 @@ public class CriterionLoader {
 		Criterion criterion = null;
 		
 		try {
-			criterionID = ResultSetParser.parseInt(rs, "CritertionID");
+			criterionID = ResultSetParser.parseInt(rs, "CriterionID");
 			criterionTitle = ResultSetParser.parseString(rs, "CriterionTitle");
 			criterionDescription = ResultSetParser.parseString(rs, "CriterionDescription");
 			
