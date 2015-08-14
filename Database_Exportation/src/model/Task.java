@@ -13,11 +13,12 @@ public class Task {
 
 	private Integer taskTypeID;
 
-
 	private String taskTitle;
 	private String taskDescription;
 	private Date taskOpen;
 	private Date taskDue;
+	// this round variable is for keeping track of the round number for each task. It will not be recorded in PRML db.
+	private Integer round;
 	/**
 	 * @param taskID2
 	 * @param taskTypeID
@@ -28,7 +29,7 @@ public class Task {
 	 */
 
 	
-	public Task(Integer taskID, Integer taskTypeID, String taskTitle, String taskDescription, Date taskOpen, Date taskDue) {
+	public Task(Integer taskID, Integer taskTypeID, String taskTitle, String taskDescription, Date taskOpen, Date taskDue, Integer round) {
 		super();
 		this.taskID = taskID;
 		this.taskTypeID = taskTypeID;
@@ -36,6 +37,21 @@ public class Task {
 		this.taskDescription = taskDescription;
 		this.taskOpen = taskOpen;
 		this.taskDue = taskDue;
+		this.round = round;
+	}
+
+	/**
+	 * @return the round
+	 */
+	public Integer getRound() {
+		return round;
+	}
+
+	/**
+	 * @param round the round to set
+	 */
+	public void setRound(Integer round) {
+		this.round = round;
 	}
 
 	/**

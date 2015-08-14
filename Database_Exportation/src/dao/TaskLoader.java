@@ -6,6 +6,8 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 import database_access_object.DBConnector;
@@ -44,11 +46,38 @@ public class TaskLoader{
 				taskList.add(task);
 			}
 		}
+		
+		//before sorting
+		System.out.println("Before sorting:");
+		for (int i = 0; i < taskList.size();i++){
+			System.out.println(taskList.get(i).toString());
+		}
+		
 		rs.close();
 		dbc.close();
+		
+		// sort the tasklist based on TaskDue field. TaskTypeID can be 1,2,5 etc...
+		Collections.sort(taskList, new CompareByTaskDue());
+		
+		//after sorting
+		System.out.println("After sorting:");
+		for (int i = 0; i < taskList.size();i++){
+			System.out.println(taskList.get(i).toString());
+		}
+		// for each of them, give round number based on their orders.
+		
 		return taskList;
 	}
 
+	private class CompareByTaskDue implements Comparator<Task>{
+
+		@Override
+		public int compare(Task task1, Task task2) {
+			// TODO Auto-generated method stub
+			return task1.getTaskDue().compareTo(task2.getTaskDue());
+		}
+		
+	}
 	
 	/**
 	 * A method that will load a single task
@@ -71,7 +100,7 @@ public class TaskLoader{
 			taskPrompt = ResultSetParser.parseString(rs, "TaskDescription");
 			taskOpen = ResultSetParser.parseDate(rs, "TaskOpen");
 			taskDue = ResultSetParser.parseDate(rs, "TaskDue");
-			task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue);
+			task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue,0);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
