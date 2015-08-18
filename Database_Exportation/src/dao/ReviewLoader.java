@@ -41,17 +41,17 @@ public class ReviewLoader {
 	}
 
 	public Review loadSingle(ResultSet rs) {
-		String assessorActorID;
-		String TaskID;
-		String assessedArtifactID;
-		String critiqueArtifactID;
+		Integer assessorActorID;
+		Integer TaskID;
+		Integer assessedArtifactID;
+		Integer critiqueArtifactID;
 		Review review = null;
 		
 		try {
-			assessorActorID = ResultSetParser.parseString(rs, "AssessorActorID");
-			TaskID = ResultSetParser.parseString(rs, "TaskID");
-			assessedArtifactID = ResultSetParser.parseString(rs, "AssessedArtifactID");
-			critiqueArtifactID = ResultSetParser.parseString(rs, "CritiqueArtifactID");
+			assessorActorID = ResultSetParser.parseInt(rs, "AssessorActorID");
+			TaskID = ResultSetParser.parseInt(rs, "TaskID");
+			assessedArtifactID = ResultSetParser.parseInt(rs, "AssessedArtifactID");
+			critiqueArtifactID = ResultSetParser.parseInt(rs, "CritiqueArtifactID");
 			review = new Review(assessorActorID, TaskID, assessedArtifactID, critiqueArtifactID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
