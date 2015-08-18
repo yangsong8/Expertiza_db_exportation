@@ -110,6 +110,7 @@ public class DBEntrance {
 					}
 
 					
+
 //					ActorLoader actorLoader = new ActorLoader();
 //					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
 //					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
@@ -150,6 +151,7 @@ public class DBEntrance {
 //								//load items
 //							}
 //				}
+
 					
 					
 				}

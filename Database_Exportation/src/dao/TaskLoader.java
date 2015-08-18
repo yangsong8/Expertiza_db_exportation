@@ -23,6 +23,9 @@ import model.Task;
 
 public class TaskLoader{
 	
+	private static Integer roundID1 = 0;
+	private static Integer roundID2 = 0;
+	private static Integer roundID5 = 0;
 	/**
 	 * A method that will use the corresponding assignmentId to load a list of tasks
 	 * @param assignmentId
@@ -48,10 +51,10 @@ public class TaskLoader{
 		}
 		
 		//before sorting
-		System.out.println("Before sorting:");
-		for (int i = 0; i < taskList.size();i++){
-			System.out.println(taskList.get(i).toString());
-		}
+//		System.out.println("Before sorting:");
+//		for (int i = 0; i < taskList.size();i++){
+//			System.out.println(taskList.get(i).toString());
+//		}
 		
 		rs.close();
 		dbc.close();
@@ -100,7 +103,21 @@ public class TaskLoader{
 			taskPrompt = ResultSetParser.parseString(rs, "TaskDescription");
 			taskOpen = ResultSetParser.parseDate(rs, "TaskOpen");
 			taskDue = ResultSetParser.parseDate(rs, "TaskDue");
-			task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue,0);
+			
+			switch(taskTypeID){
+			case 1:
+				++roundID1;
+				task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue, roundID1);
+				break;
+			case 2:
+				++roundID2;
+				task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue, roundID2);
+				break;
+			case 5:
+				task = new Task(taskID, taskTypeID, taskTitle, taskPrompt, taskOpen, taskDue,roundID5);
+				break;
+			}
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -126,5 +126,15 @@ public class Task {
 	public void setTaskDue(Date taskDue) {
 		this.taskDue = taskDue;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Task [taskID=" + taskID + ", taskTypeID=" + taskTypeID + ", taskTitle=" + taskTitle
+				+ ", taskDescription=" + taskDescription + ", taskOpen=" + taskOpen + ", taskDue=" + taskDue
+				+ ", round=" + round + "]";
+	}
 	
 }
