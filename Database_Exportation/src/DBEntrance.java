@@ -60,15 +60,6 @@ public class DBEntrance {
 		CourseLoader courseLoader = new CourseLoader();
 		ArrayList<Course> courseList = courseLoader.loadList();
 		
-//		for(int i = 0; i < courseList.size(); i++) {
-//			String tempCIP = new String(courseList.get(i).getCourseCIPCode());
-//			System.out.print(courseList.get(i).getCourseID() + " " + tempCIP + " " 
-//					+ courseList.get(i).getCourseLevelID() + " " + courseList.get(i).getCourseTitle() + " " 
-//					+ courseList.get(i).getCourseDescription() + " " + courseList.get(i).getCourseCreated() + " " 
-//					+ courseList.get(i).getCourseStarted() + " " + courseList.get(i).getCourseEnded() + 
-//					 "\n");
-//		}
-		
 		for(int courseIndex=0;courseIndex<courseList.size();courseIndex++)
 		{
 			CourseInserter.insertSingle(courseList.get(courseIndex));
@@ -84,13 +75,15 @@ public class DBEntrance {
 				for(int taskIndex = 0; taskIndex < taskList.size(); taskIndex++) 
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
+					CriterionLoader criterionLoader = new CriterionLoader();
+					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
 					
-					RubricLoader rubricLoader = new RubricLoader();
-					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getTaskID());
-					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
-					{
-						RubricInserter.insert(rubricList.get(rubricIndex));	
-						
+//					RubricLoader rubricLoader = new RubricLoader();
+//					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
+//					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
+//					{
+//						RubricInserter.insert(rubricList.get(rubricIndex));	
+//						
 						//CriterionLoader criterionLoader = new CriterionLoader();
 						//ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex));
 //						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
