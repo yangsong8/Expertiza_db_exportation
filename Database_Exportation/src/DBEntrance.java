@@ -78,6 +78,9 @@ public class DBEntrance {
 					CriterionLoader criterionLoader = new CriterionLoader();
 					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
 					
+					for (int i = 0; i < criterionList.size(); i++){
+						CriterionInserter.insertSingle(criterionList.get(i));
+					}
 //					RubricLoader rubricLoader = new RubricLoader();
 //					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
 //					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
@@ -154,4 +157,4 @@ public class DBEntrance {
 		
 	}
 
-}
+

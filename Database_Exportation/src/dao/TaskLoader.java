@@ -50,12 +50,6 @@ public class TaskLoader{
 			}
 		}
 		
-		//before sorting
-//		System.out.println("Before sorting:");
-//		for (int i = 0; i < taskList.size();i++){
-//			System.out.println(taskList.get(i).toString());
-//		}
-		
 		rs.close();
 		dbc.close();
 		
@@ -67,7 +61,6 @@ public class TaskLoader{
 		for (int i = 0; i < taskList.size();i++){
 			System.out.println(taskList.get(i).toString());
 		}
-		// for each of them, give round number based on their orders.
 		
 		return taskList;
 	}
