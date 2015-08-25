@@ -42,9 +42,6 @@ import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 import model.Level;
 
-/**
- * 
- */
 
 /**
  * An entrance to the database
@@ -77,12 +74,15 @@ public class DBEntrance {
 				for(int taskIndex = 0; taskIndex < taskList.size(); taskIndex++) 
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
-					CriterionLoader criterionLoader = new CriterionLoader();
-					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());		
-
-					for (int i = 0; i < criterionList.size(); i++){
-						CriterionInserter.insertSingle(criterionList.get(i));
-					}
+//					CriterionLoader criterionLoader = new CriterionLoader();
+//					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());		
+//
+//					for (int i = 0; i < criterionList.size(); i++){
+//						CriterionInserter.insertSingle(criterionList.get(i));
+//					}
+					///commented by Kai since the db is not available
+					
+					
 //					RubricLoader rubricLoader = new RubricLoader();
 //					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
 //					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)

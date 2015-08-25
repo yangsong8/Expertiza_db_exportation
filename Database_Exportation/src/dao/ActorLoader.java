@@ -20,7 +20,7 @@ public class ActorLoader {
 	
 	public ArrayList<Actor> loadList(int assignmentId) throws SQLException {
 		ArrayList<Actor> actorList = new ArrayList<Actor>();
-		//unfinished sql query 
+		//query for teams
 		String sql = "select id as 'ActorID' from teams where type ='AssignmentTeam' and parent_id = "+assignmentId+";";
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
@@ -32,6 +32,18 @@ public class ActorLoader {
 				actorList.add(actor);
 			}
 		}
+		//query for participants
+		sql = "select id+100000 as 'ActorID' from participants where type='AssignmentParticipant' and parent_id="+assignmentId+";";
+		rs = dbc.query(sql);
+		while(rs.next()){
+			Actor actor = loadSingle(rs);
+			if(actor == null) {
+				
+			} else {
+				actorList.add(actor);
+			}
+		}
+		
 		rs.close();
 		dbc.close();
 		return actorList;
