@@ -28,9 +28,11 @@ public class ArtifactLoader {
 		} else if(typeID == 2) //peer-review: can be multiple responses, so the size could >1
 		{
 			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
-		} else if( typeID == 3) //3 (peer-review), can be multiple responses, so the size could >1
+			return artifactList;
+		} else if( typeID == 5) //5 meta-review, can be multiple responses, so the size could >1
 		{
 			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
+			return artifactList;
 		}
 		
 		DBConnector dbc = new DBConnector();
@@ -49,7 +51,6 @@ public class ArtifactLoader {
 	}
 
 	public Artifact loadSingle(ResultSet rs) {
-		Integer artifactID;
 		Integer actorID;
 		Integer taskID;
 		String artifactContent;
@@ -60,7 +61,7 @@ public class ArtifactLoader {
 		
 		Artifact artifact = null;
 		try {
-			artifactID = ResultSetParser.parseInt(rs, "ArtifactID");
+			
 			actorID = ResultSetParser.parseInt(rs, "ActorID");
 			taskID = ResultSetParser.parseInt(rs, "TaskID");
 			artifactContent = ResultSetParser.parseString(rs, "ArtifactContent");
@@ -68,7 +69,7 @@ public class ArtifactLoader {
 			artifactOpen = ResultSetParser.parseDate(rs, "ArtifactOpen");
 			artifactEnd = ResultSetParser.parseDate(rs, "ArtifactEnd");
 			
-			artifact = new Artifact(artifactID, actorID, taskID, artifactContent, artifactCharLength,
+			artifact = new Artifact(actorID, taskID, artifactContent, artifactCharLength,
 				 artifactOpen, artifactEnd);
 			
 			} catch (SQLException e) {

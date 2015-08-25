@@ -29,10 +29,10 @@ public class Artifact {
 	 * @param artifactOpen
 	 * @param artifactEnd
 	 */
-	public Artifact(Integer artifactID, Integer actorID, Integer taskID, String artifactContent, Integer artifactCharLength,
+	public Artifact(Integer actorID, Integer taskID, String artifactContent, Integer artifactCharLength,
 			Date artifactOpen, Date artifactEnd) {
 		super();
-		this.artifactID = artifactID;
+		
 		this.actorID = actorID;
 		this.taskID = taskID;
 		this.artifactContent = artifactContent;
@@ -41,19 +41,7 @@ public class Artifact {
 		this.artifactEnd = artifactEnd;
 	}
 
-	/**
-	 * @return the artifactID
-	 */
-	public Integer getArtifactID() {
-		return artifactID;
-	}
-
-	/**
-	 * @param artifactID the artifactID to set
-	 */
-	public void setArtifactID(Integer artifactID) {
-		this.artifactID = artifactID;
-	}
+	
 
 	/**
 	 * @return the actorID
@@ -137,6 +125,24 @@ public class Artifact {
 	 */
 	public void setArtifactEnd(Date artifactEnd) {
 		this.artifactEnd = artifactEnd;
+	}
+
+
+
+	/**
+	 * @return the artifactID
+	 */
+	public Integer getArtifactID() {
+		return artifactID;
+	}
+
+
+
+	/**
+	 * @param artifactID the artifactID to set
+	 */
+	public void setArtifactID(Integer artifactID) {
+		this.artifactID = artifactID;
 	}
 	
 	

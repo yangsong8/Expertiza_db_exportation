@@ -8,6 +8,7 @@ import model.Artifact;
 import model.Assignment;
 import model.Course;
 import model.Enrollment;
+import model.Item;
 import model.Participant;
 import model.Rubric;
 import model.Task;
@@ -18,6 +19,7 @@ import model.Task;
 import dao.ArtifactLoader;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+import dao.ItemLoader;
 import dao.ParticipantLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
@@ -26,7 +28,6 @@ import dao.inserter.AssignmentInserter;
 import dao.CriterionLoader;
 import dao.LevelLoader;
 import dao.RubricLoader;
-
 import dao.TaskLoader;
 import dao.inserter.ActorParticipantInserter;
 import dao.inserter.ArtifactInserter;
@@ -34,6 +35,7 @@ import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
 import dao.inserter.EnrollmentInserter;
+import dao.inserter.ItemInserter;
 import dao.inserter.LevelInserter;
 import dao.inserter.ParticipantInserter;
 import dao.inserter.RubricInserter;
@@ -85,29 +87,29 @@ public class DBEntrance {
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
 					
-					RubricLoader rubricLoader = new RubricLoader();
-					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getTaskID());
-					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
-					{
-						RubricInserter.insert(rubricList.get(rubricIndex));	
-						
-						//CriterionLoader criterionLoader = new CriterionLoader();
-						//ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex));
-//						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
-//						{
-//							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
-//							//for Van
-//							LevelLoader levelLoader = new LevelLoader();
-//							//return a list of levels for each question
-//							//1) if there are question advice associated with this question, use the advice,
-//							//2) if not, read the max/min level from questionnaire table in Expertiza
-//							ArrayList<Level>levelList = levelLoader.loadList(rubricList.get(rubricIndex), criterionList.get(criterionIndex));
-//							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
-//							{
-//								LevelInserter.insertSingle(levelList.get(levelIndex));
-//							}
-//						}
-					}
+//					RubricLoader rubricLoader = new RubricLoader();
+//					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getTaskID());
+//					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
+//					{
+//						RubricInserter.insert(rubricList.get(rubricIndex));	
+//						
+//						//CriterionLoader criterionLoader = new CriterionLoader();
+//						//ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex));
+////						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
+////						{
+////							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
+////							//for Van
+////							LevelLoader levelLoader = new LevelLoader();
+////							//return a list of levels for each question
+////							//1) if there are question advice associated with this question, use the advice,
+////							//2) if not, read the max/min level from questionnaire table in Expertiza
+////							ArrayList<Level>levelList = levelLoader.loadList(rubricList.get(rubricIndex), criterionList.get(criterionIndex));
+////							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
+////							{
+////								LevelInserter.insertSingle(levelList.get(levelIndex));
+////							}
+////						}
+//					}
 
 					
 					ActorLoader actorLoader = new ActorLoader();
@@ -142,14 +144,20 @@ public class DBEntrance {
 						//                  2 (peer-review), can be multiple responses, so the size could >1
 						//                  3 (peer-review), can be multiple responses, so the size could >1
 						ArrayList<Artifact> artifactList = artifactLoader.loadList(actorTask, taskList.get(taskIndex).getTaskTypeID());
-//						for(int artifactIndex =0; artifactIndex<artifactList.size(); artifactIndex++)
-//						{
-//							//ArtifactInserter.insertSingle(artifactList.get(artifactIndex));
-////							if (taskList.get(taskIndex).getTaskTypeID()==1)
-////							{
-////								//load items
-////							}
-//						}
+						for(int artifactIndex =0; artifactIndex<artifactList.size(); artifactIndex++)
+						{
+							ArtifactInserter.insertSingle(artifactList.get(artifactIndex));
+							if (taskList.get(taskIndex).getTaskTypeID()==1)
+							{	
+								ItemLoader itemLoader = new ItemLoader();
+								ArrayList<Item> itemList = itemLoader.loadList(artifactList.get(artifactIndex).getActorID(),artifactList.get(artifactIndex).getArtifactID());
+								for(int itemIndex = 0; itemIndex < itemList.size(); itemIndex++) {
+									ItemInserter.insertSingle(itemList.get(itemIndex));
+								}
+								
+								
+							}
+						}
 					}
 					
 					

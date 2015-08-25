@@ -11,17 +11,17 @@ package model;
  */
 public class Item {
 	
+	//we will use auto-incremental method to handle the itemID
 	private Integer itemID;
 	private String itemContent;
-	private String artifactID;
+	private Integer artifactID;
 	/**
 	 * @param itemID
 	 * @param itemContent
 	 * @param artifactID
 	 */
-	public Item(Integer itemID, String itemContent, String artifactID) {
+	public Item(String itemContent, Integer artifactID) {
 		super();
-		this.itemID = itemID;
 		this.itemContent = itemContent;
 		this.artifactID = artifactID;
 	}
@@ -52,13 +52,13 @@ public class Item {
 	/**
 	 * @return the artifactID
 	 */
-	public String getArtifactID() {
+	public Integer getArtifactID() {
 		return artifactID;
 	}
 	/**
 	 * @param artifactID the artifactID to set
 	 */
-	public void setArtifactID(String artifactID) {
+	public void setArtifactID(Integer artifactID) {
 		this.artifactID = artifactID;
 	}
 	

@@ -35,12 +35,16 @@ public class ArtifactInserter {
 					pstmt.setString(1, artifact.getActorID().toString());
 					pstmt.setString(2, artifact.getTaskID().toString());
 					pstmt.setString(3, artifact.getArtifactContent());
-					pstmt.setString(4, artifact.getArtifactCharLength().toString());
+					pstmt.setNull(4, java.sql.Types.INTEGER);
 					pstmt.setObject(5, artifact.getArtifactOpen());
 					pstmt.setObject(6, artifact.getArtifactEnd());
 					
 					
 					pstmt.executeUpdate();
+					rs = st.executeQuery("select max(ArtifactID) from Artifact;");
+					rs.next();
+					int maxArtifactId = rs.getInt(1);
+					artifact.setArtifactID(maxArtifactId);
 					System.out.println("==========Artifact object inserted=============");
 				}
 
