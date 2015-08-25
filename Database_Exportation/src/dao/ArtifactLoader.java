@@ -24,14 +24,18 @@ public class ArtifactLoader {
 		String sql = "";
 		if(typeID==1)//submission: we cannot use team_id as artifact id! we have to rely on auto-incremental
 		{
+			if(actorTask.getActorId()>100000) // this actor is a participant in Expertiza, so it does not have any artifact.
+			{
+				return artifactList;
+			}
 			sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
-		} else if(typeID == 2) //peer-review: can be multiple responses, so the size could >1
+		} 
+		else if(typeID == 2) 
 		{
-			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
 			return artifactList;
-		} else if( typeID == 5) //5 meta-review, can be multiple responses, so the size could >1
+		} 
+		else if( typeID == 5) 
 		{
-			//sql = "SELECT "+actorTask.getActorId()+" as ActorID, "+actorTask.getTaskId()+" as TaskID, name as ArtifactContent, NULL as ArtifactCharLength, NULL as ArtifactOpen, NULL as ArtifactEnd from teams where id="+actorTask.getActorId()+";";
 			return artifactList;
 		}
 		

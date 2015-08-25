@@ -132,28 +132,31 @@ public class DBEntrance {
 						}
 						
 						//for each actor_task, load the *submission*, we deal submitted hyperlinks only at this time
-						// if task type id ==1 (submission), create artifact object and load the submitted hyperlinks as items
-						//                   2 (peer-review), create artifact object for each response
-						//                   5 (meta-review), create artifact object for each response
 						ArtifactLoader artifactLoader = new ArtifactLoader();
 						//if task type id ==1 (submission), only 1 artifact for each actor in each task, the size of the list is 1
-						//                  2 (peer-review), can be multiple responses, so the size could >1
-						//                  3 (peer-review), can be multiple responses, so the size could >1
+						//                  2 (peer-review), not loaded
+						//                  5 (meta-review), not loaded
 						ArrayList<Artifact> artifactList = artifactLoader.loadList(actorTask, taskList.get(taskIndex).getTaskTypeID());
 						for(int artifactIndex =0; artifactIndex<artifactList.size(); artifactIndex++)
 						{
+							//artifact object does not have it, but after inserted, the id will be updated in the line below
 							ArtifactInserter.insertSingle(artifactList.get(artifactIndex));
+							
+							// if it is submission task, load the artifacts for submission
 							if (taskList.get(taskIndex).getTaskTypeID()==1)
 							{	
 								ItemLoader itemLoader = new ItemLoader();
 								ArrayList<Item> itemList = itemLoader.loadList(artifactList.get(artifactIndex).getActorID(),artifactList.get(artifactIndex).getArtifactID());
 								for(int itemIndex = 0; itemIndex < itemList.size(); itemIndex++) {
 									ItemInserter.insertSingle(itemList.get(itemIndex));
-								}
-								
-								
+								}	
 							}
+							
+							
 						}
+						
+						
+						
 					}
 
 				}

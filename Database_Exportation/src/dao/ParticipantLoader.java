@@ -27,8 +27,15 @@ public class ParticipantLoader {
 	public ArrayList<Participant> loadList(int actorID) throws SQLException {
 		ArrayList<Participant> participantList = new ArrayList<Participant>();
 		//Query for all the Participants
-		
-		String sql = "SELECT user_id as 'ParticipantID' from teams_users where team_id = "+actorID+";";
+		String sql = "";
+		if(actorID>100000)
+		{
+			sql = "select user_id as 'ParticipantID' from participants where id="+(actorID-100000)+";";
+		}
+		else
+		{
+			sql = "SELECT user_id as 'ParticipantID' from teams_users where team_id = "+actorID+";";
+		}
 		
 		DBConnector dbc = new DBConnector();
 		ResultSet rs = dbc.query(sql);
