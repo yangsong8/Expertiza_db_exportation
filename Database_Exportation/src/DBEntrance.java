@@ -10,6 +10,7 @@ import model.Course;
 import model.Enrollment;
 import model.Item;
 import model.Participant;
+import model.Review;
 import model.Rubric;
 import model.Task;
 import dao.ActorLoader;
@@ -21,6 +22,7 @@ import dao.AssignmentLoader;
 import dao.CourseLoader;
 import dao.ItemLoader;
 import dao.ParticipantLoader;
+import dao.ReviewLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
 import dao.inserter.ActorTaskInserter;
@@ -38,6 +40,7 @@ import dao.inserter.EnrollmentInserter;
 import dao.inserter.ItemInserter;
 import dao.inserter.LevelInserter;
 import dao.inserter.ParticipantInserter;
+import dao.inserter.ReviewInserter;
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
 import model.Level;
@@ -152,6 +155,11 @@ public class DBEntrance {
 								}	
 							}
 							
+							ReviewLoader reviewLoader =  new ReviewLoader();
+							ArrayList<Review> reviewList = reviewLoader.loadList(taskList.get(taskIndex), artifactList.get(artifactIndex));
+							for(int reviewIndex = 0 ; reviewIndex < reviewList.size(); reviewIndex++) {
+								ReviewInserter.insertSingle(reviewList.get(reviewIndex));
+							}
 							
 						}
 						
