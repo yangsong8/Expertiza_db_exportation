@@ -51,7 +51,7 @@ import model.Level;
 
 
 /**
- * An entrance object to the database
+ * An entrance to the database
  * @author kma
  *
  */
