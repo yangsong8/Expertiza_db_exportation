@@ -41,6 +41,10 @@ public class ActorInserter {
 					pstmt.executeUpdate();
 					System.out.println("==========Actor object inserted=============");
 				}
+				rs.close();
+				st.close();
+				pstmt.close();
+				con.close();
 				
 				
 		   }catch(Exception e)

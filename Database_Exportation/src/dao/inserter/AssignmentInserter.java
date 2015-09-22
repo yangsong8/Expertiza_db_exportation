@@ -31,7 +31,8 @@ public class AssignmentInserter{
 				
 				pstmt.executeUpdate();
 				System.out.println("==========Assignment object inserted=============");
-				
+				pstmt.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

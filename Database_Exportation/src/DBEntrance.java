@@ -11,6 +11,7 @@ import model.Enrollment;
 import model.Item;
 import model.Participant;
 import model.Review;
+import model.ReviewCriterionLevel;
 import model.Rubric;
 import model.Task;
 import dao.ActorLoader;
@@ -22,6 +23,7 @@ import dao.AssignmentLoader;
 import dao.CourseLoader;
 import dao.ItemLoader;
 import dao.ParticipantLoader;
+import dao.ReviewCriterionLevelLoader;
 import dao.ReviewLoader;
 import dao.TaskLoader;
 import dao.inserter.ActorInserter;
@@ -40,9 +42,11 @@ import dao.inserter.EnrollmentInserter;
 import dao.inserter.ItemInserter;
 import dao.inserter.LevelInserter;
 import dao.inserter.ParticipantInserter;
+import dao.inserter.ReviewCriterionLevelInserter;
 import dao.inserter.ReviewInserter;
 import dao.inserter.RubricInserter;
 import dao.inserter.TaskInserter;
+import database_access_object.DBConnector;
 import model.Level;
 
 
@@ -61,6 +65,7 @@ public class DBEntrance {
 	public static void main(String[] args) throws SQLException {
 		CourseLoader courseLoader = new CourseLoader();
 		ArrayList<Course> courseList = courseLoader.loadList();
+		
 		
 		for(int courseIndex=0;courseIndex<courseList.size();courseIndex++)
 		{
@@ -159,6 +164,14 @@ public class DBEntrance {
 							ArrayList<Review> reviewList = reviewLoader.loadList(taskList.get(taskIndex), artifactList.get(artifactIndex));
 							for(int reviewIndex = 0 ; reviewIndex < reviewList.size(); reviewIndex++) {
 								ReviewInserter.insertSingle(reviewList.get(reviewIndex));
+								
+								ReviewCriterionLevelLoader reviewCriterionLevelLoader = new ReviewCriterionLevelLoader();
+								ArrayList<ReviewCriterionLevel> reviewCriterionLevelList = reviewCriterionLevelLoader.loadList(reviewList.get(reviewIndex));
+								
+								for(int reviewCriterionLevelIndex = 0; reviewCriterionLevelIndex < reviewCriterionLevelList.size(); reviewCriterionLevelIndex++) {
+									ReviewCriterionLevelInserter.insertSingle(reviewCriterionLevelList.get(reviewCriterionLevelIndex));
+								}
+								
 							}
 							
 						}

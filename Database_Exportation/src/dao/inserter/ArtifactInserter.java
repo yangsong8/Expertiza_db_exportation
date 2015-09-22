@@ -46,6 +46,9 @@ public class ArtifactInserter {
 					int maxArtifactId = rs.getInt(1);
 					artifact.setArtifactID(maxArtifactId);
 					System.out.println("==========Artifact object inserted=============");
+					pstmt.close();
+					st.close();
+					con.close();
 				}
 
 		   }catch(Exception e)

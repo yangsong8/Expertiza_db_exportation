@@ -48,7 +48,7 @@ public class ReviewLoader {
 		Connection con=DriverManager.getConnection("jdbc:mysql://localhost/expertiza_development", "root", "");
 		for(int i = 0; i < mapIDs.size(); i++){
 			PreparedStatement pstmt = con.prepareStatement("select response_maps.reviewer_id+100000 as 'AssessorActorID', "+task.getTaskID()+" as 'TaskID', "
-					+ ""+artifact.getArtifactID()+" as AssessedArtifactID, NULL as 'CritiqueArtifactID' from responses, response_maps "
+					+ ""+artifact.getArtifactID()+" as AssessedArtifactID, NULL as 'CritiqueArtifactID',"+mapIDs.get(i)+" as 'MapID' from responses, response_maps "
 							+ "where responses.map_id = ? and response_maps.id=responses.map_id and "
 							+ "responses.updated_at< ? order by responses.updated_at desc limit 1;");
 			
@@ -58,7 +58,7 @@ public class ReviewLoader {
 			pstmt.setString(1, mapIDs.get(i).toString());
 			pstmt.setObject(2, task.getTaskDue()); 
 			
-			System.out.println(pstmt.toString());
+			
 			ResultSet rsReview = pstmt.executeQuery();
 			if (!rsReview.isBeforeFirst())
 			{
@@ -69,7 +69,10 @@ public class ReviewLoader {
 				rsReview.next();
 				reviewList.add(loadSingle(rsReview));
 			}
+			pstmt.close();
+			rsReview.close();
 		}
+		con.close();
 		
 		return reviewList;
 	
@@ -80,6 +83,7 @@ public class ReviewLoader {
 		Integer TaskID;
 		Integer assessedArtifactID;
 		Integer critiqueArtifactID;
+		Integer mapID;
 		Review review = null;
 		
 		try {
@@ -87,7 +91,8 @@ public class ReviewLoader {
 			TaskID = ResultSetParser.parseInt(rs, "TaskID");
 			assessedArtifactID = ResultSetParser.parseInt(rs, "AssessedArtifactID");
 			critiqueArtifactID = ResultSetParser.parseInt(rs, "CritiqueArtifactID");
-			review = new Review(assessorActorID, TaskID, assessedArtifactID, critiqueArtifactID);
+			mapID = ResultSetParser.parseInt(rs, "MapID");
+			review = new Review(assessorActorID, TaskID, assessedArtifactID, critiqueArtifactID, mapID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

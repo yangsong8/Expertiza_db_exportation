@@ -32,7 +32,8 @@ public class CourseInserter
 				
 				pstmt.executeUpdate();
 				System.out.println("=======================");
-				
+				pstmt.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

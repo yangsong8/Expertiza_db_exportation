@@ -6,7 +6,6 @@ package dao.inserter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Types;
 
 import model.Review;
 
@@ -32,6 +31,8 @@ public class ReviewInserter {
 				
 				pstmt.executeUpdate();
 				System.out.println("==========Review object inserted=============");
+				pstmt.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

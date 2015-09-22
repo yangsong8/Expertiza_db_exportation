@@ -35,7 +35,11 @@ public class CriterionInserter {
 				pstmt.executeUpdate();
 				System.out.println("==========Criterion object inserted=============");
 				
-			}	
+			}
+			rs.close();
+			pstmt.close();
+			st.close();
+			con.close();
 		   }catch(Exception e)
 		   {e.printStackTrace();
 			   System.out.println("Database error");

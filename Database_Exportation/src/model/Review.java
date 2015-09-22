@@ -14,6 +14,8 @@ public class Review {
 	private Integer taskID;
 	private Integer assessedArtifactID;
 	private Integer critiqueArtifactID;
+	private Integer mapID;
+	
 	/**
 	 * @return the assessorActorID
 	 */
@@ -67,15 +69,31 @@ public class Review {
 	 * @param taskID
 	 * @param assessedArtifactID
 	 * @param critiqueArtifactID
+	 * @param mapID
 	 */
 	public Review(Integer assessorActorID, Integer taskID,
-			Integer assessedArtifactID, Integer critiqueArtifactID) {
+			Integer assessedArtifactID, Integer critiqueArtifactID,
+			Integer mapID) {
 		super();
 		this.assessorActorID = assessorActorID;
 		this.taskID = taskID;
 		this.assessedArtifactID = assessedArtifactID;
 		this.critiqueArtifactID = critiqueArtifactID;
+		this.mapID = mapID;
 	}
+	/**
+	 * @return the mapID
+	 */
+	public Integer getMapID() {
+		return mapID;
+	}
+	/**
+	 * @param mapID the mapID to set
+	 */
+	public void setMapID(Integer mapID) {
+		this.mapID = mapID;
+	}
+	
 	
 	
 }

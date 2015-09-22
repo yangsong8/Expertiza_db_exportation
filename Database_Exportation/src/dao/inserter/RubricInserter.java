@@ -41,7 +41,11 @@ public class RubricInserter {
 				
 					pstmt.executeUpdate();
 					System.out.println("==========Rubric object inserted=============");
-				
+					rs.close();
+					st.close();
+					pstmt.close();
+					con.close();
+					
 				}
 		   } catch(Exception e)
 		   {e.printStackTrace();

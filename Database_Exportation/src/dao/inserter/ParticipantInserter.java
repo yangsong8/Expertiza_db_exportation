@@ -41,6 +41,10 @@ public class ParticipantInserter {
 					pstmt.executeUpdate();
 					System.out.println("=========Participant Object Inserted==============");
 				}
+				rs.close();
+				pstmt.close();
+				st.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

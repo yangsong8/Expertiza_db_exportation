@@ -33,6 +33,8 @@ public class TaskInserter {
 				pstmt.executeUpdate();
 				System.out.println("==========Task object inserted=============");
 				
+				pstmt.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

@@ -73,6 +73,14 @@ public class ResultSetParser {
 		}
 		return null;
 	}
+
+	public static Float parseFloat(ResultSet rs, String name) throws SQLException {
+		if (rs.getString(name) == null || rs.getString(name).length()==0 ){
+			//The result for this column is NULL
+			return null;
+		}
+		return rs.getFloat(name);
+	}
 	
 	
 }

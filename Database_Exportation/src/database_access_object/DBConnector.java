@@ -19,6 +19,8 @@ public class DBConnector {
 	   
 	   private Connection conn;
 	   private Statement stmt;
+	   private ResultSet rs;
+	   
 	   /**
 	    * A method that will handle the connection with the database and return a result set
 	    * @param sql
@@ -28,7 +30,7 @@ public class DBConnector {
 		   //What is STEP 1?
 	   conn = null;
 	   stmt = null;
-	   ResultSet rs = null;
+	   rs = null;
 	   try{
 	      //STEP 2: Register JDBC driver
 	      Class.forName(JDBC_DRIVER);
@@ -61,14 +63,23 @@ public class DBConnector {
 	 */
 	public void close() {
 		try {
-			stmt.close();
-			conn.close();
-			
+			stmt.close();	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
+		try {
+			conn.close();	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

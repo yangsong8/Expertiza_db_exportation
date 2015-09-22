@@ -40,6 +40,11 @@ public class ItemInserter {
 					System.out.println("==========Item object inserted=============");
 				}
 				
+				rs.close();
+				pstmt.close();
+				st.close();
+				con.close();
+				
 		   }catch(Exception e)
 		   {e.printStackTrace();
 			   System.out.println("Database error");

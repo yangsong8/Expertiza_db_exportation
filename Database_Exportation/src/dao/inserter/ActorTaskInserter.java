@@ -22,6 +22,8 @@ public class ActorTaskInserter {
 				pstmt.executeUpdate();
 				System.out.println("==========ActorTask object inserted=============");
 				
+				pstmt.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

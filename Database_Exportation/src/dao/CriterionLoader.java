@@ -80,7 +80,7 @@ public class CriterionLoader {
              sql = "select id as 'CriterionID', txt as 'CriterionTitle', NULL as 'CriterionDescription' from questions where questionnaire_id="+questionnaire_id +"; ";
         }
  
-        DBConnector dbc1 = new DBConnector();
+        //DBConnector dbc1 = new DBConnector();
     	ResultSet rs1 = dbc.query(sql);
     	try {
 			while(rs1.next()){

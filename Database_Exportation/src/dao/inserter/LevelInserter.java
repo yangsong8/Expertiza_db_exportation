@@ -41,7 +41,11 @@ public class LevelInserter {
 				 
 				pstmt.executeUpdate();
 				System.out.println("==========Level object inserted=============");
-				
+			
+				rs.close();
+				pstmt.close();
+				st.close();
+				con.close();
 				
 		   }catch(Exception e)
 		   {e.printStackTrace();

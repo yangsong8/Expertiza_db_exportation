@@ -41,7 +41,10 @@ public class EnrollmentInserter {
 					pstmt.executeUpdate();
 					System.out.println("==========Enrollment object inserted=============");
 				}
-
+				pstmt.close();
+				st.close();
+				con.close();
+				
 		   }catch(Exception e)
 		   {e.printStackTrace();
 			   System.out.println("Database error");
