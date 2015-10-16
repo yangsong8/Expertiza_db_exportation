@@ -46,7 +46,7 @@ public class CriterionLoader {
         try {
 			while(rs.next()){
 			    questionnaire_id = ResultSetParser.parseInt(rs, "id");
-			    questionnaireIds .add(questionnaire_id );
+			    questionnaireIds.add(questionnaire_id );
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -61,19 +61,19 @@ public class CriterionLoader {
 		}
 		
         String sql = null;
-        if (questionnaireIds .size()==0)
+        if (questionnaireIds.size()==0)
         {
             return criterionList;
         }
         // if there is only one questionnaireId in the arraylist, use it anyway
-        if (questionnaireIds .size()==1)
+        if (questionnaireIds.size()==1)
         {
         	questionnaire_id = questionnaireIds.get(0);
         	//now we have that questionnaire_id, go ahead and load the criterion
             sql = "select id as 'CriterionID', txt as 'CriterionTitle', NULL as 'CriterionDescription' from questions where questionnaire_id="+questionnaire_id +"; ";
         }
         // if there are multiple questionnaire_ids in this assignment, it indicates that this assignment uses "vary_rubric_by_rounds" feature, use the round # to find the right questionnaire_id
-        if (questionnaireIds .size()>1)
+        if (questionnaireIds.size()>1)
         {
         	questionnaire_id = questionnaireIds.get(round);
         	//now we have that questionnaire_id, go ahead and load the criterion

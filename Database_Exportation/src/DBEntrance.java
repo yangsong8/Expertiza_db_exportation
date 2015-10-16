@@ -82,40 +82,21 @@ public class DBEntrance {
 				for(int taskIndex = 0; taskIndex < taskList.size(); taskIndex++) 
 				{
 					TaskInserter.insertSingle(taskList.get(taskIndex));
-//					CriterionLoader criterionLoader = new CriterionLoader();
-//					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());		
-//
-//					for (int i = 0; i < criterionList.size(); i++){
-//						CriterionInserter.insertSingle(criterionList.get(i));
-//					}
-					///commented by Kai since the db is not available
 					
+					CriterionLoader criterionLoader = new CriterionLoader();
+					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());		
+					for (int i = 0; i < criterionList.size(); i++){
+						CriterionInserter.insertSingle(criterionList.get(i));
+					}
 					
-//					RubricLoader rubricLoader = new RubricLoader();
-//					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
-//					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
-//					{
-//						RubricInserter.insert(rubricList.get(rubricIndex));	
-//						
-						//CriterionLoader criterionLoader = new CriterionLoader();
-						//ArrayList<Criterion> criterionList = criterionLoader.loadList(rubricList.get(rubricIndex));
-//						for (int criterionIndex =0; criterionIndex < criterionList.size(); criterionIndex++)
-//						{
-//							CriterionInserter.insertSingle(criterionList.get(criterionIndex));
-//							//for Van
-//							LevelLoader levelLoader = new LevelLoader();
-//							//return a list of levels for each question
-//							//1) if there are question advice associated with this question, use the advice,
-//							//2) if not, read the max/min level from questionnaire table in Expertiza
-//							ArrayList<Level>levelList = levelLoader.loadList(rubricList.get(rubricIndex), criterionList.get(criterionIndex));
-//							for(int levelIndex=0;levelIndex<levelList.size();levelIndex++)
-//							{
-//								LevelInserter.insertSingle(levelList.get(levelIndex));
-//							}
-//						}
-					
+					RubricLoader rubricLoader = new RubricLoader();
+					ArrayList<Rubric> rubricList = rubricLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());
+					for(int rubricIndex=0; rubricIndex<rubricList.size(); rubricIndex++)
+					{
+						RubricInserter.insert(rubricList.get(rubricIndex));	
+					}
 
-					
+/*kai*/					
 					ActorLoader actorLoader = new ActorLoader();
 					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());
 					for (int actorIndex=0; actorIndex<actorList.size();actorIndex++)
@@ -172,12 +153,8 @@ public class DBEntrance {
 									ReviewCriterionLevelInserter.insertSingle(reviewCriterionLevelList.get(reviewCriterionLevelIndex));
 								}
 								
-							}
-							
-						}
-						
-						
-						
+							}	
+						}	
 					}
 
 				}

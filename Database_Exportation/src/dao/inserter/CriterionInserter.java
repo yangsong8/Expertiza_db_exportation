@@ -31,7 +31,7 @@ public class CriterionInserter {
 				pstmt.setObject(2, criterion.getCriterionTitle());
 				pstmt.setObject(3, criterion.getCriterionDescription()); 
 				
-				
+				System.out.println(pstmt.toString());
 				pstmt.executeUpdate();
 				System.out.println("==========Criterion object inserted=============");
 				
