@@ -17,7 +17,7 @@ public class CriterionInserter {
 	public static void insertSingle(Criterion criterion) {
 		try {
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
-				PreparedStatement pstmt = con.prepareStatement("Insert into criterion (CriterionID, CriterionTitle, CriterionDescription) values (?,?,?)");
+				PreparedStatement pstmt = con.prepareStatement("Insert into criterion (CriterionID, CriterionTitle, CriterionDescription, Type, MaxLabel, MinLabel) values (?,?,?,?,?,?)");
 				Statement st = con.createStatement();
 		   
 			ResultSet rs = st.executeQuery("select count(*) from Criterion where CriterionID = " + criterion.getCriterionID().toString()+";");
@@ -30,6 +30,9 @@ public class CriterionInserter {
 				pstmt.setString(1, criterion.getCriterionID().toString());
 				pstmt.setObject(2, criterion.getCriterionTitle());
 				pstmt.setObject(3, criterion.getCriterionDescription()); 
+				pstmt.setString(4, criterion.getType());
+				pstmt.setString(5, criterion.getMax_label().toString());
+				pstmt.setString(6, criterion.getMin_label().toString());
 				
 				System.out.println(pstmt.toString());
 				pstmt.executeUpdate();

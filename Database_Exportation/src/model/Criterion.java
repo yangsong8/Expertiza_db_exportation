@@ -9,19 +9,31 @@ package model;
  */
 public class Criterion {
 
-	Integer criterionID;
-	String criterionTitle;
-	String criterionDescription;
+	private Integer criterionID;
+	private String criterionTitle;
+	private String criterionDescription;
+	private String type;
+	private Integer max_label;
+	private Integer min_label;
+	
 	/**
 	 * @param criterionID
 	 * @param criterionTitle
 	 * @param criterionDescription
+	 * @param type
+	 * @param max_label
+	 * @param min_label
 	 */
-	public Criterion(Integer criterionID, String criterionTitle, String criterionDescription) {
+	public Criterion(Integer criterionID, String criterionTitle,
+			String criterionDescription, String type, Integer max_label,
+			Integer min_label) {
 		super();
 		this.criterionID = criterionID;
 		this.criterionTitle = criterionTitle;
 		this.criterionDescription = criterionDescription;
+		this.type = type;
+		this.max_label = max_label;
+		this.min_label = min_label;
 	}
 	/**
 	 * @return the criterionID
@@ -58,6 +70,42 @@ public class Criterion {
 	 */
 	public void setCriterionDescription(String criterionDescription) {
 		this.criterionDescription = criterionDescription;
+	}
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+	/**
+	 * @return the max_label
+	 */
+	public Integer getMax_label() {
+		return max_label;
+	}
+	/**
+	 * @param max_label the max_label to set
+	 */
+	public void setMax_label(Integer max_label) {
+		this.max_label = max_label;
+	}
+	/**
+	 * @return the min_label
+	 */
+	public Integer getMin_label() {
+		return min_label;
+	}
+	/**
+	 * @param min_label the min_label to set
+	 */
+	public void setMin_label(Integer min_label) {
+		this.min_label = min_label;
 	}
 	
 	

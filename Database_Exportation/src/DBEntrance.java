@@ -7,6 +7,7 @@ import model.Actor;
 import model.Artifact;
 import model.Assignment;
 import model.Course;
+import model.CriterionLevel;
 import model.Enrollment;
 import model.Item;
 import model.Participant;
@@ -21,6 +22,7 @@ import model.Task;
 import dao.ArtifactLoader;
 import dao.AssignmentLoader;
 import dao.CourseLoader;
+import dao.CriterionLevelLoader;
 import dao.ItemLoader;
 import dao.ParticipantLoader;
 import dao.ReviewCriterionLevelLoader;
@@ -38,6 +40,7 @@ import dao.inserter.ArtifactInserter;
 import dao.inserter.AssignmentInserter;
 import dao.inserter.CourseInserter;
 import dao.inserter.CriterionInserter;
+import dao.inserter.CriterionLevelInserter;
 import dao.inserter.EnrollmentInserter;
 import dao.inserter.ItemInserter;
 import dao.inserter.LevelInserter;
@@ -87,6 +90,13 @@ public class DBEntrance {
 					ArrayList<Criterion> criterionList = criterionLoader.loadList(taskList.get(taskIndex).getTaskTypeID(), assignmentList.get(assignmentIndex).getAssigmentID(),taskList.get(taskIndex).getRound());		
 					for (int i = 0; i < criterionList.size(); i++){
 						CriterionInserter.insertSingle(criterionList.get(i));
+						
+						LevelLoader levelLoader = new LevelLoader();
+						ArrayList<Level> levelList = levelLoader.loadList(criterionList.get(i));
+						for(int levelIndex=0; levelIndex<levelList.size(); levelIndex++)
+						{
+							LevelInserter.insertSingle(levelList.get(levelIndex));
+						}
 					}
 					
 					RubricLoader rubricLoader = new RubricLoader();
@@ -95,7 +105,16 @@ public class DBEntrance {
 					{
 						RubricInserter.insert(rubricList.get(rubricIndex));	
 					}
-
+					
+					
+					
+//					CriterionLevelLoader criterionLevelLoader = new CriterionLevelLoader();
+//					ArrayList<CriterionLevel> criterionLevelList = criterionLevelLoader.loadList();
+//					for(int criterionLevelIndex=0; criterionLevelIndex<criterionLevelList.size(); criterionLevelIndex++)
+//					{
+//							CriterionLevelInserter.insert(criterionLevelList.get(criterionLevelIndex));
+//					}
+					
 /*kai*/					
 					ActorLoader actorLoader = new ActorLoader();
 					ArrayList<Actor> actorList = actorLoader.loadList(assignmentList.get(assignmentIndex).getAssigmentID());

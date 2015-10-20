@@ -70,7 +70,12 @@ public class CriterionLoader {
         {
         	questionnaire_id = questionnaireIds.get(0);
         	//now we have that questionnaire_id, go ahead and load the criterion
-            sql = "select id as 'CriterionID', txt as 'CriterionTitle', NULL as 'CriterionDescription' from questions where questionnaire_id="+questionnaire_id +"; ";
+            sql = "select questions.id as 'CriterionID', questions.txt as 'CriterionTitle', "
+            		+ " NULL as 'CriterionDescription',questions.type as 'Type', "
+            		+ " questionnaires.max_question_score as'MaxLabel', questionnaires.min_question_score as 'MinLabel' "
+            		+ " from questions, questionnaires "
+            		+ " where questions.questionnaire_id="+questionnaire_id +" "
+            		+ " and questions.questionnaire_id=questionnaires.id; ";
         }
         // if there are multiple questionnaire_ids in this assignment, it indicates that this assignment uses "vary_rubric_by_rounds" feature, use the round # to find the right questionnaire_id
         if (questionnaireIds.size()>1)
@@ -81,6 +86,7 @@ public class CriterionLoader {
         }
  
         //DBConnector dbc1 = new DBConnector();
+        System.out.println(sql);
     	ResultSet rs1 = dbc.query(sql);
     	try {
 			while(rs1.next()){
@@ -107,15 +113,24 @@ public class CriterionLoader {
 
 	private Criterion loadSingle(ResultSet rs) {
 		Integer criterionID;
-		String criterionTitle, criterionDescription;
+		String criterionTitle;
+		String criterionDescription;
+		String criterionType;
+		Integer criterionMaxLabel;
+		Integer criterionMinLabel;
+		
 		Criterion criterion = null;
 		
 		try {
 			criterionID = ResultSetParser.parseInt(rs, "CriterionID");
 			criterionTitle = ResultSetParser.parseString(rs, "CriterionTitle");
 			criterionDescription = ResultSetParser.parseString(rs, "CriterionDescription");
+			criterionType = ResultSetParser.parseString(rs, "Type");
+			criterionMaxLabel = ResultSetParser.parseInt(rs, "MaxLabel");
+			criterionMinLabel = ResultSetParser.parseInt(rs, "MinLabel");
 			
-			criterion = new Criterion(criterionID, criterionTitle, criterionDescription);
+			
+			criterion = new Criterion(criterionID, criterionTitle, criterionDescription,criterionType,criterionMaxLabel,criterionMinLabel);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

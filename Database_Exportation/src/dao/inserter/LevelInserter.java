@@ -18,22 +18,16 @@ import model.Level;
 public class LevelInserter {
 
 	public static void insertSingle(Level level) {
-		try(
+		try{
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost/PRML", "root", "");
 				PreparedStatement pstmt = con.prepareStatement("Insert into Level (LevelID, LevelLabel, LevelDescription) values (?,?,?)");
 				Statement st = con.createStatement();
-		   )
-		//check if there is another criterion object in the db
 
-		   {
-				
-		   
-			ResultSet rs = st.executeQuery("select count(*) from Criterion where CriterionID = " + level.getLevelID().toString()+";");
+			ResultSet rs = st.executeQuery("select count(*) from level where LevelID = " + level.getLevelID().toString()+";");
 			rs.next();
 			int num = rs.getInt(1);
-			if(num != 0) {
-			
-			}
+			if(num == 0) 
+			{
 				pstmt.clearParameters();
 				pstmt.setString(1, level.getLevelID().toString());
 				pstmt.setString(2, level.getLevelLabel().toString());
@@ -47,7 +41,9 @@ public class LevelInserter {
 				st.close();
 				con.close();
 				
-		   }catch(Exception e)
+		   }
+		}
+			catch(Exception e)
 		   {e.printStackTrace();
 			   System.out.println("Database error");
 		   }
